@@ -4,6 +4,7 @@ class_name Player
 const SPEED = 500.0
 
 @onready var health: Health = $Health
+@onready var money: Money = $Money
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta):

@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var player: Player = $"../Player"
 @onready var collider = $CollisionShape2D
 @onready var damage_timer = $Timer
+@onready var animated_sprite = $AnimatedSprite2D
+
 
 func _ready() -> void:
 	damage_timer.connect("timeout", _damage_player)
@@ -21,6 +23,11 @@ func _physics_process(delta: float) -> void:
 		velocity = direction * speed
 	else:
 		velocity = Vector2.ZERO
+		
+	if direction.x > 0:
+		animated_sprite.flip_h = false
+	elif direction.x < 0:
+		animated_sprite.flip_h = true
 
 	move_and_slide()
 
