@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="1_85hcc"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="1_wfhpi"]
 [ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/monster.tscn" id="1_whpuv"]
-[ext_resource type="PackedScene" path="res://player/Weapon.tscn" id="3_7he1i"]
+[ext_resource type="PackedScene" uid="uid://bggoq8pe341u5" path="res://player/Weapon.tscn" id="3_7he1i"]
 [ext_resource type="PackedScene" uid="uid://ppshjh2npp44" path="res://player/Bullet.tscn" id="5_0glgv"]
 
 [node name="Sandbox" type="Node2D"]
@@ -33,6 +33,8 @@ position = Vector2(-2, -2)
 
 [node name="Weapon" parent="Player" instance=ExtResource("3_7he1i")]
 position = Vector2(3, 6)
+bullet_scene = ExtResource("5_0glgv")
 
-[node name="BulletSpawner" parent="." instance=ExtResource("5_0glgv")]
-position = Vector2(129, 102)
+[node name="BulletSpawner" parent="Player/Weapon" instance=ExtResource("5_0glgv")]
+position = Vector2(-3, -6)
+scale = Vector2(1, 1)

@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	damage_timer.connect("timeout", _damage_player)
-		
+	add_to_group("Ememies")
 
 func _physics_process(delta: float) -> void:
 	if not player:
