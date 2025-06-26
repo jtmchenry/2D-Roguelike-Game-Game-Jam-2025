@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://fhqdcygqhv8m"]
+[gd_scene load_steps=5 format=3 uid="uid://fhqdcygqhv8m"]
 
 [ext_resource type="Script" uid="uid://bv4u2dfwd51dh" path="res://monster/monster.gd" id="1_xbb8b"]
 [ext_resource type="Texture2D" uid="uid://4nwrgydoxh7v" path="res://icon.svg" id="2_mwava"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1k8np"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsx7y"]
+
 [node name="Monster" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_xbb8b")
+speed = null
+damage = null
+
+[node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(12, 12)
@@ -15,3 +22,13 @@ shape = SubResource("CircleShape2D_1k8np")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("2_mwava")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(12, 12)
+shape = SubResource("CircleShape2D_gsx7y")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
