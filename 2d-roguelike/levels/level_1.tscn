@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://vyh83bel05jy"]
 
-[ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/level_0.tscn" id="1_vn7o3"]
+[ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_vn7o3"]
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_jirdo"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="3_bt44k"]
 [ext_resource type="PackedScene" uid="uid://bggoq8pe341u5" path="res://player/Weapon.tscn" id="4_kx6l7"]
@@ -9,7 +9,7 @@
 
 [node name="Level1" type="Node2D"]
 
-[node name="Level0" parent="." instance=ExtResource("1_vn7o3")]
+[node name="Map" parent="." instance=ExtResource("1_vn7o3")]
 
 [node name="HUD" parent="." instance=ExtResource("2_jirdo")]
 

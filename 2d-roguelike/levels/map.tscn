@@ -437,7 +437,7 @@ texture = ExtResource("1_eus5j")
 [sub_resource type="TileSet" id="TileSet_jum3j"]
 sources/0 = SubResource("TileSetAtlasSource_7d3si")
 
-[node name="Level0" type="Node2D"]
+[node name="Map" type="Node2D"]
 scale = Vector2(5, 5)
 
 [node name="Floor" type="TileMapLayer" parent="."]
