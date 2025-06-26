@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm1ipexiutcqk"]
+[gd_scene load_steps=5 format=3 uid="uid://bm1ipexiutcqk"]
 
 [ext_resource type="Script" uid="uid://bkwrmcwsqqh7a" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="2_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://4nwrgydoxh7v" path="res://icon.svg" id="2_rkbax"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kqu6x"]
@@ -8,6 +9,8 @@
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_oul6g")
+
+[node name="Health" parent="." instance=ExtResource("2_g1dw6")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(5, 5)

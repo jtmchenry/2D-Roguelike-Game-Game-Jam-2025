@@ -26,8 +26,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body)
-	print('entered')
 	if (_is_player(body)):
 		_damage_player()
 		damage_timer.start()
@@ -40,6 +38,6 @@ func _is_player(body: Node2D) -> bool:
 	return player == body
 	
 func _damage_player() -> void:
-	player.hit(damage)
+	player.health.hit(damage)
 	return
 	

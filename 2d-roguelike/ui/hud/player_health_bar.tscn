@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://x5bexxsssvfh"]
+
+[ext_resource type="Script" uid="uid://ctx62e2lyiixs" path="res://ui/hud/player_health_bar.gd" id="1_we538"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqskl"]
+bg_color = Color(1, 0.221268, 0.167056, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_we538"]
+bg_color = Color(1.51131e-05, 0.99898, 0, 1)
+
+[node name="PlayerHealthBar" type="ProgressBar"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = -69.0
+offset_right = 498.0
+offset_bottom = -14.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_nqskl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_we538")
+value = 75.0
+show_percentage = false
+script = ExtResource("1_we538")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
