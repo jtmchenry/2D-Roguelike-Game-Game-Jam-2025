@@ -1,27 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://did71n6w1nejf"]
+[gd_scene load_steps=4 format=3 uid="uid://ppshjh2npp44"]
 
-[ext_resource type="Script" path="res://player/bullet_spawner.gd" id="1_sbiib"]
+[ext_resource type="Script" uid="uid://b85d7eauh5yah" path="res://player/bullet.gd" id="1_sbiib"]
 [ext_resource type="Texture2D" uid="uid://dh44q51omvwau" path="res://icons/bullet.png" id="2_4sosn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n70q0"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6gl0"]
 
-[node name="Bullet" type="Node2D"]
-position = Vector2(551, 304)
-metadata/_edit_group_ = true
-
-[node name="BulletSpawner" type="Area2D" parent="."]
-position = Vector2(4.24017, 2.98163)
+[node name="BulletSpawner" type="Area2D"]
 script = ExtResource("1_sbiib")
 
-[node name="BulletHitBox" type="CollisionShape2D" parent="BulletSpawner"]
-shape = SubResource("CircleShape2D_n70q0")
+[node name="BulletHitBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h6gl0")
 
-[node name="Bullet" type="Sprite2D" parent="BulletSpawner"]
-position = Vector2(-9, 4.00001)
-scale = Vector2(0.09375, 0.140625)
+[node name="BulletIcon" type="Sprite2D" parent="."]
+position = Vector2(-10, 1.90735e-06)
+scale = Vector2(0.0976563, 0.128906)
 texture = ExtResource("2_4sosn")
 
-[node name="AttackSpeed" type="Timer" parent="BulletSpawner"]
+[node name="AttackSpeed" type="Timer" parent="."]
 
-[connection signal="body_entered" from="BulletSpawner" to="BulletSpawner" method="_on_body_entered"]
-[connection signal="timeout" from="BulletSpawner/AttackSpeed" to="BulletSpawner" method="_on_timer_timeout"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

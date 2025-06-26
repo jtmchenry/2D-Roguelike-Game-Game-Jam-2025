@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="1_85hcc"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="1_wfhpi"]
 [ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/monster.tscn" id="1_whpuv"]
-[ext_resource type="PackedScene" uid="uid://did71n6w1nejf" path="res://player/Bullet.tscn" id="3_7he1i"]
-[ext_resource type="PackedScene" uid="uid://x5bexxsssvfh" path="res://ui/player_health_bar.tscn" id="3_85hcc"]
+[ext_resource type="PackedScene" uid="uid://ppshjh2npp44" path="res://player/Bullet.tscn" id="3_7he1i"]
 
 [node name="Sandbox" type="Node2D"]
 
@@ -12,9 +11,11 @@
 
 [node name="Monster" parent="." instance=ExtResource("1_whpuv")]
 position = Vector2(965, 464)
+speed = 50.0
+damage = 10
 
-[node name="Bullet" parent="." instance=ExtResource("3_7he1i")]
-position = Vector2(103, 99)
+[node name="BulletSpawner" parent="." instance=ExtResource("3_7he1i")]
+position = Vector2(106, 104)
 
 [node name="Player" parent="." instance=ExtResource("1_wfhpi")]
 position = Vector2(106, 103)
