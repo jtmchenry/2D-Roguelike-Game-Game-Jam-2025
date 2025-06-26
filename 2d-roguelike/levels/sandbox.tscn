@@ -34,7 +34,3 @@ position = Vector2(-2, -2)
 [node name="Weapon" parent="Player" instance=ExtResource("3_7he1i")]
 position = Vector2(3, 6)
 bullet_scene = ExtResource("5_0glgv")
-
-[node name="BulletSpawner" parent="Player/Weapon" instance=ExtResource("5_0glgv")]
-position = Vector2(-3, -6)
-scale = Vector2(1, 1)

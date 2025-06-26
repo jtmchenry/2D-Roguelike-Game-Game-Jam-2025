@@ -6,6 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbc1m"]
 
 [node name="Weapon" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_vo677")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
