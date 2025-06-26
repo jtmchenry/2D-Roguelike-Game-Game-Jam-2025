@@ -22,7 +22,6 @@ func get_nearest_enemy_in_area() -> CharacterBody2D:
 	var closest_enemy: CharacterBody2D = null
 	var closest_distance = INF
 	for body in get_overlapping_bodies():
-		print_debug("Checking body: ", body.name, " in group: ", body.is_in_group("Enemies"))
 		if body.is_in_group("Enemies"):
 			var dist = global_position.distance_to(body.global_position)
 			if dist < closest_distance:

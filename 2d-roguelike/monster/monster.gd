@@ -8,7 +8,6 @@ extends CharacterBody2D
 @onready var damage_timer = $Timer
 @onready var animated_sprite = $AnimatedSprite2D
 
-
 func _ready() -> void:
 	damage_timer.connect("timeout", _damage_player)
 	add_to_group("Enemies")
@@ -48,3 +47,9 @@ func _damage_player() -> void:
 	player.health.hit(damage)
 	return
 	
+func take_damage(damage: float):
+	$Health.hit(damage);
+	if($Health.health <= 0):
+		queue_free()
+	 
+	print_debug($Health.health)

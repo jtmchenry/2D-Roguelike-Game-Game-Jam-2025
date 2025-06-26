@@ -1,21 +1,22 @@
-extends Area2D
+extends Node2D
 
 var travelled_distance = 0
 @export var speed: float = 500.0
+@export var range: float = 350.0
 var direction: Vector2 = Vector2.ZERO
 
 func _physics_process(delta: float):
-	const SPEED = 1000
-	const RANGE = 350
+
+	position += direction * speed * delta
 	
-	position += direction * SPEED * delta
+	travelled_distance =+ speed * delta
 	
-	travelled_distance =+ SPEED * delta
-	if travelled_distance > RANGE:
+	if travelled_distance > range:
 		queue_free()
 		
 
-func _on_area_entered(area):
-	if area.is_in_group("Enemies"):
-		area.take_damage(1)
-		queue_free()
+func _on_bullet_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemies"):
+		if body.has_method("take_damage"):
+			body.take_damage(25)
+		queue_free()  # destroy bullet
