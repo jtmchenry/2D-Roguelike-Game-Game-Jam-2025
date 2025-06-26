@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bggoq8pe341u5"]
+[gd_scene load_steps=4 format=3 uid="uid://bggoq8pe341u5"]
 
 [ext_resource type="Script" uid="uid://k88btqxfarby" path="res://player/weapon.gd" id="1_vo677"]
 [ext_resource type="Texture2D" uid="uid://cwagja3jcy46g" path="res://icons/cd4150ade4299c5cd7c0f6b8638773d7.png" id="2_1lt5w"]
-[ext_resource type="PackedScene" uid="uid://8gm4qgrjrc54" path="res://components/Damage.tscn" id="2_kx2yx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbc1m"]
 
@@ -10,11 +9,6 @@
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_vo677")
-
-[node name="Damage" parent="." instance=ExtResource("2_kx2yx")]
-damage = 0
-criticalChance = 3.0
-criticalDamage = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pbc1m")

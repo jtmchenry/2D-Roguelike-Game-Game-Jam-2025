@@ -3,7 +3,9 @@ extends Area2D
 @export var fire_rate: float = 0.5
 @export var bullet_scene: PackedScene
 @export var weapon_range: float = 200
-@export var weapon_damage: float = 0
+@export var weapon_damage: int = 20
+@export var critical_chance: float = .5
+@export var critical_damage: float = 1.25
 
 var fire_timer: float = 0.0
 
@@ -36,4 +38,8 @@ func shoot(target: CharacterBody2D):
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
 	bullet.direction = (target.global_position - global_position).normalized()
+	bullet.damage = calc_damage(weapon_damage)
 	get_tree().current_scene.add_child(bullet)
+
+func calc_damage(damage: int) -> int:
+	return damage

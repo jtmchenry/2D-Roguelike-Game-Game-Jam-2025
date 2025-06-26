@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var floating_text_scene: PackedScene
+
 @export var speed := 50.0
 @export var damage := 50
 
@@ -47,7 +49,12 @@ func _damage_player() -> void:
 	return
 	
 func take_damage(damage: int):
-	$Health.hit();
+	var dmg_text = floating_text_scene.instantiate()
+	dmg_text.global_position = global_position
+	dmg_text.set_text(str(damage))
+	get_tree().current_scene.add_child(dmg_text)
+	
+	$Health.hit(damage);
 	if($Health.health <= 0):
 		queue_free()
 	 

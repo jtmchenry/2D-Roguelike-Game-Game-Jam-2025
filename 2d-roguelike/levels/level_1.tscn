@@ -17,6 +17,7 @@
 
 [node name="Weapon" parent="Player" instance=ExtResource("4_kx6l7")]
 bullet_scene = ExtResource("5_n46q3")
+weapon_range = 500.0
 
 [node name="Monster2" parent="." instance=ExtResource("6_btoec")]
 position = Vector2(-542, 318)
