@@ -3,15 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="1_85hcc"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="1_wfhpi"]
 [ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/monster.tscn" id="1_whpuv"]
-[ext_resource type="PackedScene" uid="uid://bggoq8pe341u5" path="res://player/Weapon.tscn" id="3_7he1i"]
-[ext_resource type="PackedScene" uid="uid://ppshjh2npp44" path="res://player/Bullet.tscn" id="5_0glgv"]
+[ext_resource type="PackedScene" path="res://player/Bullet.tscn" id="3_7he1i"]
 
 [node name="Sandbox" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource("1_85hcc")]
 
 [node name="Monster" parent="." instance=ExtResource("1_whpuv")]
-position = Vector2(965, 464)
 
 [node name="Player" parent="." instance=ExtResource("1_wfhpi")]
 position = Vector2(106, 103)
