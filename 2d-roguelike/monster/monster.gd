@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed := 50.0
-@export var damage := 10
+@export var damage := 50
 
 @onready var player: Player = $"../Player"
 @onready var collider = $CollisionShape2D
