@@ -1,18 +1,18 @@
 [gd_scene load_steps=8 format=3 uid="uid://blr5cemfmikr4"]
 
-[ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_0glgv"]
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="1_85hcc"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="1_wfhpi"]
 [ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/monster.tscn" id="1_whpuv"]
+[ext_resource type="PackedScene" path="res://levels/level_1.tscn" id="2_llpag"]
 [ext_resource type="PackedScene" uid="uid://bggoq8pe341u5" path="res://player/Weapon.tscn" id="3_7he1i"]
 [ext_resource type="PackedScene" uid="uid://ppshjh2npp44" path="res://player/Bullet.tscn" id="5_0glgv"]
 [ext_resource type="PackedScene" uid="uid://56n6m7spdfq2" path="res://coin/coin.tscn" id="7_llpag"]
 
 [node name="Sandbox" type="Node2D"]
 
-[node name="Level0" parent="." instance=ExtResource("1_0glgv")]
-
 [node name="HUD" parent="." instance=ExtResource("1_85hcc")]
+
+[node name="Level1" parent="." instance=ExtResource("2_llpag")]
 
 [node name="Monster" parent="." instance=ExtResource("1_whpuv")]
 position = Vector2(576, 410)
@@ -32,6 +32,7 @@ position = Vector2(-2, -2)
 [node name="Weapon" parent="Player" instance=ExtResource("3_7he1i")]
 position = Vector2(11.4, -0.8)
 bullet_scene = ExtResource("5_0glgv")
+weapon_damage = 5.0
 
 [node name="Coin" parent="." instance=ExtResource("7_llpag")]
 position = Vector2(345, -104)

@@ -18,5 +18,5 @@ func _physics_process(delta: float):
 func _on_bullet_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
 		if body.has_method("take_damage"):
-			body.take_damage(25)
+			body.take_damage($Player/Weapon)
 		queue_free()  # destroy bullet

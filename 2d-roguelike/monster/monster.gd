@@ -46,8 +46,8 @@ func _damage_player() -> void:
 	player.health.hit(damage)
 	return
 	
-func take_damage(damage: float):
-	$Health.hit(damage);
+func take_damage(damage: int):
+	$Health.hit();
 	if($Health.health <= 0):
 		queue_free()
 	 
