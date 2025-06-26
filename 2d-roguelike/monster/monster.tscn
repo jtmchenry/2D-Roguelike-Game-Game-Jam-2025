@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://fhqdcygqhv8m"]
+[gd_scene load_steps=6 format=3 uid="uid://fhqdcygqhv8m"]
 
 [ext_resource type="Script" uid="uid://bv4u2dfwd51dh" path="res://monster/monster.gd" id="1_xbb8b"]
+[ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="2_2k2s0"]
 [ext_resource type="Texture2D" uid="uid://4nwrgydoxh7v" path="res://icon.svg" id="2_mwava"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1k8np"]
@@ -10,6 +11,8 @@
 [node name="Monster" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_xbb8b")
+
+[node name="Health" parent="." instance=ExtResource("2_2k2s0")]
 
 [node name="Timer" type="Timer" parent="."]
 
