@@ -1,9 +1,6 @@
 extends Node2D
 
 @onready var game_over_modal = $GameOver
-var time_limit = 5.0  # seconds
-var elapsed = 0.0
-var done = false
 
 func _ready() -> void:
 	$AudioPlayer.play()

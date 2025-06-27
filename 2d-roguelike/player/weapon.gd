@@ -1,11 +1,16 @@
 extends Area2D
 
-@export var fire_rate: float = 0.5
 @export var bullet_scene: PackedScene
-@export var weapon_range: float = 200
-@export var weapon_damage: int = 20
-@export var critical_chance: float = .5
-@export var critical_damage: float = 1.25
+var base_weapon_range: float = 200
+var base_weapon_damage: int = 10
+var base_critical_chance: float = .1
+var base_critical_damage: float = 50
+var base_fire_rate: float = .5
+
+var current_weapon_range: float = base_weapon_range
+var current_weapon_damage: int = base_weapon_damage
+var current_critical_chance: float = base_critical_chance
+var current_critical_damage: float = base_critical_damage
 
 var fire_timer: float = 0.0
 
@@ -13,11 +18,12 @@ func _ready():
 	position += Vector2(1, -2).normalized() * 20
 
 func _process(delta):
+	calc_buffed_stats()
 	if Game.is_game_over:
 		return
 	var shape = $CollisionShape2D.shape
 	if shape is CircleShape2D:
-		shape.radius += weapon_range
+		shape.radius += current_weapon_range
 		
 	fire_timer -= delta
 	var target = get_nearest_enemy_in_area()
@@ -27,7 +33,7 @@ func _process(delta):
 		rotation = direction.angle()
 	
 	if target and fire_timer <= 0:
-		fire_timer = fire_rate
+		fire_timer = base_fire_rate
 		shoot(target)
 
 func get_nearest_enemy_in_area() -> CharacterBody2D:
@@ -47,8 +53,22 @@ func shoot(target: CharacterBody2D):
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
 	bullet.direction = (target.global_position - global_position).normalized()
-	bullet.damage = calc_damage(weapon_damage)
+	var critical = roll_for_chance(current_critical_chance)
+	var damage = current_weapon_damage
+	bullet.critical = false
+	if critical:
+		bullet.critical = critical
+		damage = current_weapon_damage * (1 + current_critical_damage / 100.0)
+	bullet.damage = damage
 	get_tree().current_scene.add_child(bullet)
 
-func calc_damage(damage: int) -> int:
-	return damage
+func calc_buffed_stats():
+	var player = get_parent()
+	current_critical_chance = base_critical_chance + player.critical_chance_boost
+	current_critical_damage = base_critical_damage + player.critical_damage_boost
+	current_weapon_range = base_weapon_range + player.weapon_range
+	current_weapon_damage = base_weapon_damage * (1 + player.damage_percentage_boost / 100.0)
+
+func roll_for_chance(critical_chance: float) -> bool:
+	var roll = randf()
+	return roll > critical_chance

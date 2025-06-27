@@ -35,7 +35,6 @@ z_index = 1
 
 [node name="Weapon" parent="Player" instance=ExtResource("4_kx6l7")]
 bullet_scene = ExtResource("5_n46q3")
-weapon_range = 500.0
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_08mmt")]
 player = NodePath("../Player")

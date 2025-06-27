@@ -3,7 +3,7 @@ extends CharacterBody2D
 #@export var floating_text_scene: PackedScene
 
 @export var speed := 50.0
-@export var damage := 50
+@export var damage := 10
 @export var loot_scene: PackedScene
 
 @onready var player: Player = $"../Player"
@@ -57,8 +57,11 @@ func _damage_player() -> void:
 	player.health.hit(damage, Color.RED)
 	return
 	
-func take_damage(damage: int):	
-	$Health.hit(damage, Color.WHITE);
+func take_damage(damage: int, critical: bool):	
+	if critical:
+		$Health.hit(damage, Color.INDIGO);
+	else:
+		$Health.hit(damage, Color.WHITE);
 	if($Health.health <= 0):
 		drop_loot()
 		queue_free()

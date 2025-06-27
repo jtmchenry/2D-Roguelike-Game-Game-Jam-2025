@@ -7,6 +7,12 @@ const SPEED = 500.0
 @onready var money: Money = $Money
 @onready var animated_sprite = $AnimatedSprite2D
 
+#Player Stats
+var critical_damage_boost = 50
+var critical_chance_boost = .2
+var weapon_range = 100
+var damage_percentage_boost = 50
+
 signal player_died
 
 func _physics_process(delta):
