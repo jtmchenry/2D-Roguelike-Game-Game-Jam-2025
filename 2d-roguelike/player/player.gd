@@ -7,9 +7,10 @@ const SPEED = 500.0
 @onready var money: Money = $Money
 @onready var animated_sprite = $AnimatedSprite2D
 
+signal player_died
+
 func _physics_process(delta):
-	if health.health == 0:
-		animated_sprite.play("dead")
+	if Game.is_game_over:
 		return
 	var x_direction = Input.get_axis("move_left", "move_right")
 	var y_direction = Input.get_axis("move_up", "move_down")
@@ -27,3 +28,8 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	return
+
+
+func _on_health_died() -> void:
+	animated_sprite.play("dead")
+	emit_signal("player_died")

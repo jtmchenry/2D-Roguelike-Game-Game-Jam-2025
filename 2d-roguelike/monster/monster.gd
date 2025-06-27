@@ -15,6 +15,8 @@ func _ready() -> void:
 	add_to_group("Enemies")
 
 func _physics_process(delta: float) -> void:
+	if Game.is_game_over:
+		return
 	if not player:
 		var players = get_tree().get_nodes_in_group("player")
 		player = players[0]
@@ -49,15 +51,12 @@ func _is_player(body: Node2D) -> bool:
 	return player == body
 	
 func _damage_player() -> void:
+	if Game.is_game_over:
+		return
 	player.health.hit(damage)
 	return
 	
-func take_damage(damage: int):
-	#var dmg_text = floating_text_scene.instantiate()
-	#dmg_text.global_position = global_position
-	#dmg_text.set_text(str(damage))
-	#get_tree().current_scene.add_child(dmg_text)
-	
+func take_damage(damage: int):	
 	$Health.hit(damage);
 	if($Health.health <= 0):
 		queue_free()

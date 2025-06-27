@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var fire_rate: float = 0.05
+@export var fire_rate: float = 0.5
 @export var bullet_scene: PackedScene
 @export var weapon_range: float = 200
 @export var weapon_damage: int = 20
@@ -10,6 +10,8 @@ extends Area2D
 var fire_timer: float = 0.0
 
 func _process(delta):
+	if Game.is_game_over:
+		return
 	var shape = $CollisionShape2D.shape
 	if shape is CircleShape2D:
 		shape.radius += weapon_range

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vyh83bel05jy"]
+[gd_scene load_steps=9 format=3 uid="uid://vyh83bel05jy"]
 
 [ext_resource type="Script" uid="uid://ce1iq8t15yidq" path="res://levels/level_1.gd" id="1_gwceb"]
 [ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_vn7o3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="3_bt44k"]
 [ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_btoec"]
 [ext_resource type="PackedScene" uid="uid://bggoq8pe341u5" path="res://player/Weapon.tscn" id="4_kx6l7"]
+[ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="5_l53as"]
 [ext_resource type="PackedScene" uid="uid://ppshjh2npp44" path="res://player/Bullet.tscn" id="5_n46q3"]
 
 [node name="Level1" type="Node2D"]
@@ -19,6 +20,10 @@ script = ExtResource("1_gwceb")
 number_of_spawns = 20
 number_of_waves = 5
 
+[node name="GameOver" parent="." instance=ExtResource("5_l53as")]
+visible = false
+z_index = 1
+
 [node name="Player" parent="." instance=ExtResource("3_bt44k")]
 
 [node name="Weapon" parent="Player" instance=ExtResource("4_kx6l7")]
@@ -26,3 +31,4 @@ bullet_scene = ExtResource("5_n46q3")
 weapon_range = 500.0
 
 [connection signal="all_monsters_killed" from="MonsterSpawner" to="." method="_on_monster_spawner_all_monsters_killed"]
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]

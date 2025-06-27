@@ -212,4 +212,6 @@ shape = SubResource("CircleShape2D_kqu6x")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_g4c7l")
-animation = &"idle"
+animation = &"dead"
+
+[connection signal="died" from="Health" to="." method="_on_health_died"]
