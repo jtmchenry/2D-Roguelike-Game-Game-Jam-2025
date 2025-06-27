@@ -19,9 +19,9 @@ func set_bus_volume(bus_name: String, value: float):
 
 func save_settings():
 	var config = ConfigFile.new()
-	config.set_value("audio", "master", $MasterVolumeSlider.value)
-	config.set_value("audio", "music", $MusicVolumeSlider.value)
-	config.set_value("audio", "sfx", $SFXVolumeSlider.value)
+	config.set_value("audio", "master", $VBoxContainer/MasterVolumeSlider.value)
+	config.set_value("audio", "music", $VBoxContainer/MusicVolumeSlider.value)
+	config.set_value("audio", "sfx", $VBoxContainer/SFXVolumeSlider.value)
 	config.save("user://settings.cfg")
 
 func load_settings():
@@ -29,9 +29,9 @@ func load_settings():
 	var err = config.load("user://settings.cfg")
 	if err != OK:
 		return
-	$MasterVolumeSlider.value = config.get_value("audio", "master", 1.0)
-	$MusicVolumeSlider.value = config.get_value("audio", "music", 1.0)
-	$SFXVolumeSlider.value = config.get_value("audio", "sfx", 1.0)
+	$VBoxContainer/MasterVolumeSlider.value = config.get_value("audio", "master", 1.0)
+	$VBoxContainer/MusicVolumeSlider.value = config.get_value("audio", "music", 1.0)
+	$VBoxContainer/SFXVolumeSlider.value = config.get_value("audio", "sfx", 1.0)
 
 
 func _on_master_volume_slider_value_changed(value: float):
@@ -45,6 +45,7 @@ func _on_music_volume_slider_value_changed(value: float):
 func _on_sfx_volume_slider_value_changed(value: float):
 	set_bus_volume("SFX", value)
 
-func _on_Back_pressed():
+func _on_back_button_pressed() -> void:
 	save_settings()
-	hide()  # Or go back to main menu
+	hide()
+	$"../TitleMenu".show()  # Or go back to main menu
