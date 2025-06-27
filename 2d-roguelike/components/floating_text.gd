@@ -15,5 +15,6 @@ func _process(delta):
 	if timer >= lifetime:
 		queue_free()
 
-func set_text(value: String):
+func set_text(value: String, color : Color):
+	$Label.add_theme_color_override("font_color", color)
 	$Label.text = value

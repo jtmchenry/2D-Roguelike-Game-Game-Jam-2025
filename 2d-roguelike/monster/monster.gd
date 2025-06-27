@@ -54,11 +54,11 @@ func _is_player(body: Node2D) -> bool:
 func _damage_player() -> void:
 	if Game.is_game_over:
 		return
-	player.health.hit(damage)
+	player.health.hit(damage, Color.RED)
 	return
 	
 func take_damage(damage: int):	
-	$Health.hit(damage);
+	$Health.hit(damage, Color.WHITE);
 	if($Health.health <= 0):
 		drop_loot()
 		queue_free()
