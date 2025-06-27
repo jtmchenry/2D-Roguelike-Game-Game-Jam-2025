@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var game_over_modal = $GameOver
 
+func _ready() -> void:
+	$AudioPlayer.play()
+
 func _on_monster_spawner_all_monsters_killed() -> void:
 	Game.level_complete()
 

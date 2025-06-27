@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://70qp4cuw43e7"]
+[gd_scene load_steps=3 format=3 uid="uid://70qp4cuw43e7"]
 
 [ext_resource type="Script" uid="uid://q5444ygud4ae" path="res://ui/main_menu.gd" id="1_t7e0r"]
+[ext_resource type="AudioStream" uid="uid://b5y1v4xdcv7f3" path="res://audio/Undone.wav" id="2_0dkrt"]
 
 [node name="Main Menu" type="CanvasLayer"]
 script = ExtResource("1_t7e0r")
@@ -45,5 +46,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Quit
 "
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0dkrt")
 
 [connection signal="pressed" from="Control/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
