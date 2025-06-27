@@ -9,6 +9,9 @@ extends Area2D
 
 var fire_timer: float = 0.0
 
+func _ready():
+	position += Vector2(1, -2).normalized() * 20
+
 func _process(delta):
 	if Game.is_game_over:
 		return
@@ -18,6 +21,10 @@ func _process(delta):
 		
 	fire_timer -= delta
 	var target = get_nearest_enemy_in_area()
+	
+	if target:
+		var direction = target.global_position - global_position
+		rotation = direction.angle()
 	
 	if target and fire_timer <= 0:
 		fire_timer = fire_rate

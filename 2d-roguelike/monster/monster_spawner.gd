@@ -27,7 +27,6 @@ func _process(delta: float) -> void:
 		emit_signal("all_monsters_killed")
 
 func _on_wave_timer_timeout() -> void:
-	print("spawning %d" % spawns_per_wave)
 	within_wave_timer.start()
 
 
