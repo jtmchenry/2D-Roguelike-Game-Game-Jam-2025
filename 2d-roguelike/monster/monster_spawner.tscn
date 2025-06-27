@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://2kec8tbt6m51"]
 
 [ext_resource type="Script" uid="uid://w8i5mqyiaieq" path="res://monster/monster_spawner.gd" id="1_dw6pn"]
-[ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/monster.tscn" id="2_36vr2"]
+[ext_resource type="PackedScene" uid="uid://dy7xk4id5djc6" path="res://monster/spawn.tscn" id="2_36vr2"]
 
 [node name="MonsterSpawner" type="Node2D"]
 script = ExtResource("1_dw6pn")
-monster_scene = ExtResource("2_36vr2")
+spawn_scene = ExtResource("2_36vr2")
 
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 5.0

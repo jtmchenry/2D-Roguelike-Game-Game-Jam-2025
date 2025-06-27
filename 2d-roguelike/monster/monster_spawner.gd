@@ -2,7 +2,7 @@ extends Node2D
 
 @export var number_of_spawns = 0
 @export var number_of_waves = 0
-@export var monster_scene: PackedScene
+@export var spawn_scene: PackedScene
 @export var radius: int = 1000
 
 @onready var wave_timer = $WaveTimer
@@ -47,6 +47,6 @@ func _on_within_wave_timer_timeout() -> void:
 func _spawn_monster():
 	var x = randf_range(-radius / 2, radius / 2)
 	var y = randf_range(-radius / 2, radius / 2)
-	var monster := monster_scene.instantiate()
+	var monster := spawn_scene.instantiate()
 	monster.position = Vector2(x, y)
 	monster_container.add_child(monster)

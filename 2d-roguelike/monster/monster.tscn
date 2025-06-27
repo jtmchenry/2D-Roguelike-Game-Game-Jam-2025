@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://fhqdcygqhv8m"]
+[gd_scene load_steps=12 format=3 uid="uid://fhqdcygqhv8m"]
 
 [ext_resource type="Script" uid="uid://bv4u2dfwd51dh" path="res://monster/monster.gd" id="1_xbb8b"]
 [ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="2_2k2s0"]
+[ext_resource type="PackedScene" uid="uid://be6hi18cycgv3" path="res://monster/loot.tscn" id="2_ck3l0"]
 [ext_resource type="Texture2D" uid="uid://c5i7cfnb7skog" path="res://monster/slime_green.png" id="3_2k2s0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1k8np"]
@@ -50,12 +51,14 @@ animations = [{
 scale = Vector2(5, 5)
 collision_layer = 2
 script = ExtResource("1_xbb8b")
+loot_scene = ExtResource("2_ck3l0")
 
 [node name="Health" parent="." instance=ExtResource("2_2k2s0")]
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
 scale = Vector2(12, 12)
 shape = SubResource("CircleShape2D_1k8np")
 
@@ -63,11 +66,12 @@ shape = SubResource("CircleShape2D_1k8np")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -6)
 scale = Vector2(12, 12)
 shape = SubResource("CircleShape2D_gsx7y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_le4c3")
 animation = &"idle"
 autoplay = "idle"

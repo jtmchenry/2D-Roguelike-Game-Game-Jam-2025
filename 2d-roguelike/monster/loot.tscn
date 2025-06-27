@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://be6hi18cycgv3"]
+
+[ext_resource type="Script" uid="uid://cvx11vl88k0t8" path="res://monster/loot.gd" id="1_bje38"]
+[ext_resource type="PackedScene" uid="uid://56n6m7spdfq2" path="res://coin/coin.tscn" id="2_t54g5"]
+
+[node name="Loot" type="Node2D"]
+script = ExtResource("1_bje38")
+item_scene = ExtResource("2_t54g5")
+desapwn_after_seconds = 10.0
+flicker_seconds_remaining = 3.0
+
+[node name="DespawnTimer" type="Timer" parent="."]
+
+[node name="FlickerTimer" type="Timer" parent="."]
+
+[node name="StartFlickerTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="timeout" from="FlickerTimer" to="." method="_on_flicker_timer_timeout"]
+[connection signal="timeout" from="StartFlickerTimer" to="." method="_on_start_flicker_timer_timeout"]

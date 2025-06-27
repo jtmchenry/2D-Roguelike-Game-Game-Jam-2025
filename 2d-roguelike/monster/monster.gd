@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @export var speed := 50.0
 @export var damage := 50
+@export var loot_scene: PackedScene
 
 @onready var player: Player = $"../Player"
 @onready var collider = $CollisionShape2D
@@ -59,4 +60,13 @@ func _damage_player() -> void:
 func take_damage(damage: int):	
 	$Health.hit(damage);
 	if($Health.health <= 0):
+		drop_loot()
 		queue_free()
+		
+func drop_loot():
+	for i in range(8):
+		var l = loot_scene.instantiate()
+		var x = randf_range(-50, 50)
+		var y = randf_range(-50, 50)
+		l.global_position = global_position + Vector2(x, y)
+		get_tree().get_root().add_child(l)
