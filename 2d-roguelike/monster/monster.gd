@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var floating_text_scene: PackedScene
+#@export var floating_text_scene: PackedScene
 
 @export var speed := 50.0
 @export var damage := 50
@@ -15,6 +15,10 @@ func _ready() -> void:
 	add_to_group("Enemies")
 
 func _physics_process(delta: float) -> void:
+	if not player:
+		var players = get_tree().get_nodes_in_group("player")
+		player = players[0]
+	
 	if not player:
 		return
 
@@ -49,13 +53,11 @@ func _damage_player() -> void:
 	return
 	
 func take_damage(damage: int):
-	var dmg_text = floating_text_scene.instantiate()
-	dmg_text.global_position = global_position
-	dmg_text.set_text(str(damage))
-	get_tree().current_scene.add_child(dmg_text)
+	#var dmg_text = floating_text_scene.instantiate()
+	#dmg_text.global_position = global_position
+	#dmg_text.set_text(str(damage))
+	#get_tree().current_scene.add_child(dmg_text)
 	
 	$Health.hit(damage);
 	if($Health.health <= 0):
 		queue_free()
-	 
-	print_debug($Health.health)

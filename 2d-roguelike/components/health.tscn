@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://mnhqgkcmcr5d"]
+[gd_scene load_steps=3 format=3 uid="uid://mnhqgkcmcr5d"]
 
 [ext_resource type="Script" uid="uid://dmclbc7561otd" path="res://components/health.gd" id="1_ledv5"]
+[ext_resource type="PackedScene" uid="uid://cpb0geexxwgkq" path="res://components/floating_text.tscn" id="2_rxxxd"]
 
-[node name="Health" type="Node"]
+[node name="Health" type="Node2D"]
 script = ExtResource("1_ledv5")
+floating_text_scene = ExtResource("2_rxxxd")

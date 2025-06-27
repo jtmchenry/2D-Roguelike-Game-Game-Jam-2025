@@ -22,5 +22,6 @@ texture = ExtResource("2_1lt5w")
 unique_name_in_owner = true
 
 [node name="AttackSpeed" type="Timer" parent="."]
+wait_time = 0.2
 
 [connection signal="timeout" from="AttackSpeed" to="." method="_on_attack_speed_timeout"]

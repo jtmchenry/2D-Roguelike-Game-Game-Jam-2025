@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://2kec8tbt6m51"]
+
+[ext_resource type="Script" uid="uid://w8i5mqyiaieq" path="res://monster/monster_spawner.gd" id="1_dw6pn"]
+[ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/monster.tscn" id="2_36vr2"]
+
+[node name="MonsterSpawner" type="Node2D"]
+script = ExtResource("1_dw6pn")
+monster_scene = ExtResource("2_36vr2")
+
+[node name="WaveTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="WithinWaveTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Monsters" type="Node2D" parent="."]
+
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="WithinWaveTimer" to="." method="_on_within_wave_timer_timeout"]

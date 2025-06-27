@@ -1,17 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://vyh83bel05jy"]
+[gd_scene load_steps=8 format=3 uid="uid://vyh83bel05jy"]
 
+[ext_resource type="Script" uid="uid://ce1iq8t15yidq" path="res://levels/level_1.gd" id="1_gwceb"]
 [ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_vn7o3"]
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_jirdo"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="3_bt44k"]
+[ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_btoec"]
 [ext_resource type="PackedScene" uid="uid://bggoq8pe341u5" path="res://player/Weapon.tscn" id="4_kx6l7"]
 [ext_resource type="PackedScene" uid="uid://ppshjh2npp44" path="res://player/Bullet.tscn" id="5_n46q3"]
-[ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/monster.tscn" id="6_btoec"]
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_gwceb")
 
 [node name="Map" parent="." instance=ExtResource("1_vn7o3")]
 
 [node name="HUD" parent="." instance=ExtResource("2_jirdo")]
+
+[node name="MonsterSpawner" parent="." instance=ExtResource("3_btoec")]
+number_of_spawns = 20
+number_of_waves = 5
 
 [node name="Player" parent="." instance=ExtResource("3_bt44k")]
 
@@ -19,14 +25,4 @@
 bullet_scene = ExtResource("5_n46q3")
 weapon_range = 500.0
 
-[node name="Monster2" parent="." instance=ExtResource("6_btoec")]
-position = Vector2(-542, 318)
-
-[node name="Monster3" parent="." instance=ExtResource("6_btoec")]
-position = Vector2(565, 45)
-
-[node name="Monster4" parent="." instance=ExtResource("6_btoec")]
-position = Vector2(-490, -378)
-
-[node name="Monster5" parent="." instance=ExtResource("6_btoec")]
-position = Vector2(528, -427)
+[connection signal="all_monsters_killed" from="MonsterSpawner" to="." method="_on_monster_spawner_all_monsters_killed"]

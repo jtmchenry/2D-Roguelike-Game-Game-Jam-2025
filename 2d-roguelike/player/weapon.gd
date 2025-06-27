@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var fire_rate: float = 0.5
+@export var fire_rate: float = 0.05
 @export var bullet_scene: PackedScene
 @export var weapon_range: float = 200
 @export var weapon_damage: int = 20
