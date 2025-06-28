@@ -54,7 +54,7 @@ func _is_player(body: Node2D) -> bool:
 func _damage_player() -> void:
 	if Game.is_game_over:
 		return
-	AudioManager.play_sfx("res://audio/player/hurt.wav")
+	AudioManager.play_sfx("player_hurt")
 	player.health.hit(damage, Color.RED)
 	return
 	
@@ -64,7 +64,7 @@ func take_damage(damage: int, critical: bool):
 	else:
 		$Health.hit(damage, Color.WHITE);
 	if($Health.health <= 0):
-		AudioManager.play_sfx("res://audio/explosion.wav")
+		AudioManager.play_sfx("explosion")
 		drop_loot()
 		queue_free()
 		

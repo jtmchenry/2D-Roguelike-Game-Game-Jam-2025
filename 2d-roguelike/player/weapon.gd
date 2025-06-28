@@ -51,7 +51,7 @@ func get_nearest_enemy_in_area() -> CharacterBody2D:
 func shoot(target: CharacterBody2D):
 	if bullet_scene == null:
 		return
-	AudioManager.play_sfx("res://audio/tap.wav")
+	AudioManager.play_sfx("shoot")
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
 	bullet.direction = (target.global_position - global_position).normalized()

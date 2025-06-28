@@ -10,6 +10,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") && body is Player:
 		var player: Player = body
 		player.money.earn(value)
-		AudioManager.play_sfx("res://audio/coin.wav")
+		AudioManager.play_sfx("coin")
 		collected = true
 		queue_free()

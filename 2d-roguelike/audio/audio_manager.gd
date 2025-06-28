@@ -1,7 +1,8 @@
 extends Node
 
 var music_player: AudioStreamPlayer
-var sfx_player: AudioStreamPlayer
+
+var sfx_players := {} 
 
 func _ready():
 	music_player = AudioStreamPlayer.new()
@@ -10,11 +11,17 @@ func _ready():
 	music_player.bus = "Music"
 	music_player.autoplay = false
 	
-	sfx_player = AudioStreamPlayer.new()
-	sfx_player.name = "SFXPlayer"
-	add_child(sfx_player)
-	sfx_player.bus = "SFX"
-	sfx_player.autoplay = false
+	_create_sfx_player("shoot", "res://audio/tap.wav")
+	_create_sfx_player("explosion", "res://audio/explosion.wav")
+	_create_sfx_player("coin", "res://audio/coin.wav")
+	_create_sfx_player("player_hurt", "res://audio/player/hurt.wav")
+
+func _create_sfx_player(name: String, stream_path: String):
+	var player = AudioStreamPlayer.new()
+	player.stream = load(stream_path)
+	player.bus = "SFX"  # make sure you have a SFX bus
+	add_child(player)
+	sfx_players[name] = player
 
 func play_music(music_file: String):
 	if music_file == null:
@@ -24,12 +31,9 @@ func play_music(music_file: String):
 	music_player.stream = music_player_stream
 	music_player.play()
 
-func play_sfx(sfx_file: String):
-	if sfx_file == null:
-		print("Error: Music file is null!")
-		return
-	var sfx_player_stream = load(sfx_file)
-	sfx_player.stream = sfx_player_stream
+func play_sfx(name: String):
+	var sfx_player = sfx_players[name]
+	print("playing " + name + " sound effect")
 	sfx_player.play()
 
 
