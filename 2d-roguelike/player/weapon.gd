@@ -71,4 +71,4 @@ func calc_buffed_stats():
 
 func roll_for_chance(critical_chance: float) -> bool:
 	var roll = randf()
-	return roll > critical_chance
+	return roll < critical_chance

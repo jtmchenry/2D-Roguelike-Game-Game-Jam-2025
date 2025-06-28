@@ -9,7 +9,7 @@ var damage_percentage_boost = 0
 var health = 100
 
 #Player Inventory
-var money = 1000
+var money = 0
 
 
 func update_player_stats_on_upgrade(id: int, value: int):

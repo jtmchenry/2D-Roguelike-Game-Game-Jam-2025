@@ -12,7 +12,6 @@ signal died
 
 func hit(amount: int, color: Color):
 	health -= amount
-	Player1.health = health
 	emit_signal("health_changed", health, max_health)
 	_float_text(amount, color)
 	if health == 0:

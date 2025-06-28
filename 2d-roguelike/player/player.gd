@@ -8,9 +8,6 @@ const SPEED = 500.0
 @onready var animated_sprite = $AnimatedSprite2D
 
 signal player_died
-
-func _ready() -> void:
-	health.health = Player1.health
 	
 func _physics_process(delta):
 	if Game.is_game_over:

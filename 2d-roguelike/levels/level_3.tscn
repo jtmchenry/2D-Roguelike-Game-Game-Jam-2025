@@ -29,7 +29,8 @@ visible = false
 [node name="Weapon" parent="Player" instance=ExtResource("6_q42ux")]
 bullet_scene = ExtResource("7_wi0qq")
 
-[node name="PauseMenu" parent="." instance=ExtResource("8_s3q8p")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_s3q8p")]
+player = NodePath("../Player")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="all_monsters_killed" from="MonsterSpawner" to="." method="_on_monster_spawner_all_monsters_killed"]
