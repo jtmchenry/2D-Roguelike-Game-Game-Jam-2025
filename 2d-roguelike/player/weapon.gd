@@ -11,6 +11,7 @@ var current_weapon_range: float = base_weapon_range
 var current_weapon_damage: int = base_weapon_damage
 var current_critical_chance: float = base_critical_chance
 var current_critical_damage: float = base_critical_damage
+var current_fire_rate: float = base_fire_rate
 
 var fire_timer: float = 0.0
 
@@ -33,7 +34,7 @@ func _process(delta):
 		rotation = direction.angle()
 	
 	if target and fire_timer <= 0:
-		fire_timer = base_fire_rate
+		fire_timer = current_fire_rate
 		shoot(target)
 
 func get_nearest_enemy_in_area() -> CharacterBody2D:
@@ -68,6 +69,7 @@ func calc_buffed_stats():
 	current_critical_damage = base_critical_damage + Player1.critical_damage_boost
 	current_weapon_range = base_weapon_range + Player1.weapon_range
 	current_weapon_damage = base_weapon_damage * (1 + Player1.damage_percentage_boost / 100.0)
+	current_fire_rate = base_fire_rate / (1 + Player1.attack_speed_boost)
 
 func roll_for_chance(critical_chance: float) -> bool:
 	var roll = randf()

@@ -6,9 +6,9 @@ var shop_item_scene = preload("res://ui/shop_item.tscn")
 
 var shop_items = [
 	{"id": 1, "name": "Damage", "value": 10, "price": 10 },
-	{"id": 2, "name": "Attack", "value": 10, "price": 25 },
-	{"id": 3, "name": "Crit Damage", "value": .1, "price": 10 },
-	{"id": 4, "name": "Crit Chance", "value": 10, "price": 10 },
+	{"id": 2, "name": "Attack", "value": .02, "price": 10 },
+	{"id": 3, "name": "Crit Damage", "value": 10, "price": 10 },
+	{"id": 4, "name": "Crit Chance", "value": 3, "price": 10 },
 	{"id": 5, "name": "Range", "value": 10, "price": 10 }
 ]
 

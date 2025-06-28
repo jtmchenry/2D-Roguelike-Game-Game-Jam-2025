@@ -3,7 +3,7 @@ extends Node
 #Player Stats
 var critical_damage_boost = 0
 var critical_chance_boost = 0
-var attack_speed_boost = 0
+var attack_speed_boost = 1
 var weapon_range = 0
 var damage_percentage_boost = 0
 var health = 100
