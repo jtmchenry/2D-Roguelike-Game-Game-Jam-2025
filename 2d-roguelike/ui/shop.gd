@@ -25,6 +25,12 @@ func populate_shop():
 	for child in grid_container.get_children():
 		child.queue_free()
 	
+	$VBoxContainer/Damage.text = str(Player1.damage_percentage_boost)
+	$VBoxContainer/AttackSpeed.text = str(Player1.attack_speed_boost)
+	$VBoxContainer/Range.text = str(Player1.weapon_range)
+	$VBoxContainer/CritDamage.text = str(Player1.critical_damage_boost)
+	$VBoxContainer/CritChance.text = str(Player1.critical_chance_boost)
+	
 	# Create an item UI for each shop item
 	for item in shop_items:
 		var item_instance = shop_item_scene.instantiate()

@@ -16,9 +16,9 @@ script = ExtResource("1_viryw")
 
 [node name="GridContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = -754.0
+offset_left = -652.0
 offset_top = -372.0
-offset_right = 731.0
+offset_right = 664.0
 offset_bottom = 173.0
 theme_override_constants/separation = 50
 alignment = 1
@@ -44,5 +44,48 @@ offset_bottom = 296.0
 theme_override_font_sizes/font_size = 34
 text = "0"
 horizontal_alignment = 1
+
+[node name="VBoxContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 584.0
+offset_top = -325.0
+offset_right = 897.0
+offset_bottom = 214.0
+columns = 2
+
+[node name="DamgeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Damage %"
+
+[node name="Damage" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="AttackSpeedLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Attack %"
+
+[node name="AttackSpeed" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RangeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Weapon Range"
+
+[node name="Range" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CriticalDamageLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Critical Damage %"
+
+[node name="CritDamage" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CritcalDamageLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Critical %"
+
+[node name="CritChance" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="Finish" to="." method="_on_finish_pressed"]
