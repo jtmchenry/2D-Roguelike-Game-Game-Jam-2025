@@ -14,6 +14,10 @@ var current_critical_damage: float = base_critical_damage
 
 var fire_timer: float = 0.0
 
+#FIND BETTER WAY TO MANAGE ALL SOUNDS TO DECOUPLE
+@onready var level = get_tree().current_scene
+@onready var sfx_player = level.get_node("SFXPlayer")
+
 func _ready():
 	position += Vector2(1, -2).normalized() * 20
 
@@ -50,6 +54,9 @@ func get_nearest_enemy_in_area() -> CharacterBody2D:
 func shoot(target: CharacterBody2D):
 	if bullet_scene == null:
 		return
+	if sfx_player:
+		sfx_player.stream = load("res://audio/tap.wav")
+		sfx_player.play()
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
 	bullet.direction = (target.global_position - global_position).normalized()
