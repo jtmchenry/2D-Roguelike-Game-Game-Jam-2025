@@ -69,6 +69,8 @@ func take_damage(damage: int, critical: bool):
 	else:
 		$Health.hit(damage, Color.WHITE);
 	if($Health.health <= 0):
+		sfx_player.stream = load("res://audio/explosion.wav")
+		sfx_player.play()
 		drop_loot()
 		queue_free()
 		

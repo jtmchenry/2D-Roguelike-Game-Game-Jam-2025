@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://q5444ygud4ae" path="res://ui/main_menu.gd" id="1_t7e0r"]
 [ext_resource type="AudioStream" uid="uid://b5y1v4xdcv7f3" path="res://audio/Undone.wav" id="2_0dkrt"]
 [ext_resource type="PackedScene" uid="uid://cqq6jdeb50g5x" path="res://ui/settings_menu.tscn" id="2_rmr83"]
-[ext_resource type="Texture2D" uid="uid://cdang2oslxm0m" path="res://levels/Background.jpg" id="2_wk0pr"]
+[ext_resource type="Texture2D" uid="uid://17jtidxs85nc" path="res://levels/knight entering the dungeon background image.jpg" id="3_rmr83"]
 
 [node name="Main Menu" type="CanvasLayer"]
 script = ExtResource("1_t7e0r")
@@ -24,18 +24,18 @@ size_flags_horizontal = 0
 
 [node name="TextureRect" type="TextureRect" parent="TitleMenu"]
 layout_mode = 0
-offset_left = -1065.0
-offset_top = -499.0
-offset_right = 1063.0
-offset_bottom = 498.0
-texture = ExtResource("2_wk0pr")
+offset_left = -1007.0
+offset_top = -531.0
+offset_right = 1088.0
+offset_bottom = 641.0
+texture = ExtResource("3_rmr83")
 
 [node name="Background" type="ColorRect" parent="TitleMenu"]
 layout_mode = 0
-offset_left = -1071.0
-offset_top = -503.0
-offset_right = 1073.0
-offset_bottom = 500.0
+offset_left = -1039.0
+offset_top = -488.0
+offset_right = 1105.0
+offset_bottom = 515.0
 color = Color(0.662745, 0.596078, 0, 0.247059)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TitleMenu"]
