@@ -5,11 +5,11 @@ extends Control
 var shop_item_scene = preload("res://ui/shop_item.tscn")
 
 var shop_items = [
-	{"id": 1, "name": "Damage", "value": 1, "price": 10 },
-	{"id": 2, "name": "Attack", "value": 2, "price": 10 },
-	{"id": 3, "name": "Crit Damage", "value": 3, "price": 10 },
-	{"id": 4, "name": "Crit Chance", "value": 3, "price": 10 },
-	{"id": 5, "name": "Range", "value": 10, "price": 10 }
+	{"id": 1, "name": "2% Damage", "value": 2, "price": 10 },
+	{"id": 2, "name": "2% Attack Speed", "value": 2, "price": 10 },
+	{"id": 3, "name": "5% Crit Damage", "value": 5, "price": 10 },
+	{"id": 4, "name": "3% Crit Chance", "value": 3, "price": 10 },
+	{"id": 5, "name": "10 Range", "value": 10, "price": 10 }
 ]
 
 func _ready():

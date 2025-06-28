@@ -23,18 +23,18 @@ size_flags_horizontal = 0
 
 [node name="TextureRect" type="TextureRect" parent="TitleMenu"]
 layout_mode = 0
-offset_left = -1007.0
-offset_top = -531.0
-offset_right = 1088.0
-offset_bottom = 641.0
+offset_left = -1042.0
+offset_top = -568.0
+offset_right = 1138.0
+offset_bottom = 658.0
 texture = ExtResource("3_rmr83")
 
 [node name="Background" type="ColorRect" parent="TitleMenu"]
 layout_mode = 0
-offset_left = -1039.0
-offset_top = -488.0
-offset_right = 1105.0
-offset_bottom = 515.0
+offset_left = -2147.0
+offset_top = -1178.0
+offset_right = 2506.0
+offset_bottom = 1382.0
 color = Color(0.662745, 0.596078, 0, 0.247059)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TitleMenu"]
