@@ -5,7 +5,7 @@ var base_weapon_range: float = 200
 var base_weapon_damage: int = 20
 var base_critical_chance: float = .1
 var base_critical_damage: float = 50
-var base_fire_rate: float = .5
+var base_fire_rate: float = .8
 
 var current_weapon_range: float = base_weapon_range
 var current_weapon_damage: int = base_weapon_damage
@@ -65,11 +65,17 @@ func shoot(target: CharacterBody2D):
 	get_tree().current_scene.add_child(bullet)
 
 func calc_buffed_stats():
-	current_critical_chance = base_critical_chance + Player1.critical_chance_boost
+	if Player1:
+		print("Player1 singleton found: ", Player1)
+	else:
+		print("Player1 is null or not found")
+	print("Type of critical_chance_boost: ", typeof(Player1.critical_chance_boost))
+	var decimal_critical_chance = Player1.critical_chance_boost / 100
+	current_critical_chance = base_critical_chance + (Player1.critical_chance_boost / 100)
 	current_critical_damage = base_critical_damage + Player1.critical_damage_boost
 	current_weapon_range = base_weapon_range + Player1.weapon_range
 	current_weapon_damage = base_weapon_damage * (1 + Player1.damage_percentage_boost / 100.0)
-	current_fire_rate = base_fire_rate / (1 + Player1.attack_speed_boost)
+	current_fire_rate = base_fire_rate / (1 + (Player1.attack_speed_boost / 100))
 
 func roll_for_chance(critical_chance: float) -> bool:
 	var roll = randf()

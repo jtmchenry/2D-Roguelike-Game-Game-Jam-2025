@@ -1,15 +1,15 @@
 extends Node
 
 #Player Stats
-var critical_damage_boost = 0
-var critical_chance_boost = 0
-var attack_speed_boost = 1
-var weapon_range = 0
-var damage_percentage_boost = 0
-var health = 100
+var critical_damage_boost : float = 0
+var critical_chance_boost : float = 0
+var attack_speed_boost : float = 0
+var weapon_range : int = 0
+var damage_percentage_boost :float = 0
+var health : int = 100
 
 #Player Inventory
-var money = 0
+var money : int = 1000
 
 
 func update_player_stats_on_upgrade(id: int, value: int):

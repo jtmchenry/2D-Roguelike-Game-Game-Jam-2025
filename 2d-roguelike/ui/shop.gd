@@ -5,9 +5,9 @@ extends Control
 var shop_item_scene = preload("res://ui/shop_item.tscn")
 
 var shop_items = [
-	{"id": 1, "name": "Damage", "value": 10, "price": 10 },
-	{"id": 2, "name": "Attack", "value": .02, "price": 10 },
-	{"id": 3, "name": "Crit Damage", "value": 10, "price": 10 },
+	{"id": 1, "name": "Damage", "value": 1, "price": 10 },
+	{"id": 2, "name": "Attack", "value": 2, "price": 10 },
+	{"id": 3, "name": "Crit Damage", "value": 3, "price": 10 },
 	{"id": 4, "name": "Crit Chance", "value": 3, "price": 10 },
 	{"id": 5, "name": "Range", "value": 10, "price": 10 }
 ]
@@ -15,6 +15,7 @@ var shop_items = [
 func _ready():
 	update_gold_display()
 	populate_shop()
+	AudioManager.play_music("res://audio/MirthmellowMarket.wav")
 
 func update_gold_display():
 	gold_label.text = "%d" % Player1.money

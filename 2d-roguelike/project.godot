@@ -20,9 +20,6 @@ config/icon="res://icon.svg"
 Game="*res://game.gd"
 AudioManager="*res://audio/audio_manager.gd"
 Player1="*res://playerdata.gd"
-Player2="*res://playerdata.gd"
-Player3="*res://playerdata.gd"
-Player4="*res://playerdata.gd"
 
 [display]
 
