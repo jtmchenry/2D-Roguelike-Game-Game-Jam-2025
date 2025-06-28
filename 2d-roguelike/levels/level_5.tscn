@@ -1,0 +1,35 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0ypgwdfpryi3"]
+
+[ext_resource type="Script" uid="uid://ce1iq8t15yidq" path="res://levels/level_1.gd" id="1_ldpug"]
+[ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_v5ho1"]
+[ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_ldpug"]
+[ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_8vr3t"]
+[ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="4_a58qw"]
+[ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_ij65d"]
+[ext_resource type="PackedScene" uid="uid://bggoq8pe341u5" path="res://player/Weapon.tscn" id="6_gci8k"]
+[ext_resource type="PackedScene" uid="uid://ppshjh2npp44" path="res://player/Bullet.tscn" id="7_gder6"]
+[ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="8_hv08k"]
+
+[node name="Level5" type="Node2D"]
+script = ExtResource("1_ldpug")
+
+[node name="Map" parent="." instance=ExtResource("1_v5ho1")]
+
+[node name="HUD" parent="." instance=ExtResource("2_ldpug")]
+
+[node name="MonsterSpawner" parent="." instance=ExtResource("3_8vr3t")]
+number_of_spawns = 120
+number_of_waves = 6
+
+[node name="GameOver" parent="." instance=ExtResource("4_a58qw")]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("5_ij65d")]
+
+[node name="Weapon" parent="Player" instance=ExtResource("6_gci8k")]
+bullet_scene = ExtResource("7_gder6")
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_hv08k")]
+metadata/_edit_use_anchors_ = true
+
+[connection signal="all_monsters_killed" from="MonsterSpawner" to="." method="_on_monster_spawner_all_monsters_killed"]

@@ -8,4 +8,4 @@ extends PanelContainer
 func set_item_data(item):
 	item_name.text = item.name
 	price.text = "%d" % item.price
-	buy_button.disabled = item.price > get_parent().get_parent().player_gold
+	buy_button.disabled = item.price > Player1.money

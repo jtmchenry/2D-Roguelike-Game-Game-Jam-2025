@@ -3,7 +3,7 @@ extends Node
 var is_game_over = false
 
 var current_level: int = 1
-var last_level = 1
+var last_level = 5
 
 func start():
 	is_game_over = false
@@ -14,8 +14,9 @@ func level_complete():
 		get_tree().change_scene_to_file("res://ui/victory.tscn")
 		return
 	current_level += 1
-	get_tree().change_scene_to_file("res://ui/upgrade.tscn")
+	get_tree().change_scene_to_file("res://ui/shop.tscn")
 	
+#TODO LATER
 func upgrade_complete():
 	get_tree().change_scene_to_file("res://ui/shop.tscn")
 	

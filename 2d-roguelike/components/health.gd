@@ -12,14 +12,18 @@ signal died
 
 func hit(amount: int, color: Color):
 	health -= amount
+	Player1.health = health
 	emit_signal("health_changed", health, max_health)
 	_float_text(amount, color)
 	if health == 0:
 		emit_signal("died")
 
 func heal(amount: int):
+	if health >= max_health:
+		return
 	health += amount
 	emit_signal("health_changed", health, max_health)
+	_float_text(amount, Color.GREEN)
 	
 func _float_text(damage: int, color: Color):
 	var dmg_text = floating_text_scene.instantiate()
