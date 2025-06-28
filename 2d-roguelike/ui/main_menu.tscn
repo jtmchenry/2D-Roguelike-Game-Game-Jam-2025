@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://70qp4cuw43e7"]
+[gd_scene load_steps=4 format=3 uid="uid://70qp4cuw43e7"]
 
 [ext_resource type="Script" uid="uid://q5444ygud4ae" path="res://ui/main_menu.gd" id="1_t7e0r"]
-[ext_resource type="AudioStream" uid="uid://b5y1v4xdcv7f3" path="res://audio/Undone.wav" id="2_0dkrt"]
 [ext_resource type="PackedScene" uid="uid://cqq6jdeb50g5x" path="res://ui/settings_menu.tscn" id="2_rmr83"]
 [ext_resource type="Texture2D" uid="uid://17jtidxs85nc" path="res://levels/knight entering the dungeon background image.jpg" id="3_rmr83"]
 
@@ -68,11 +67,6 @@ theme_override_font_sizes/font_size = 24
 text = "Quit
 "
 
-[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_0dkrt")
-bus = &"Music"
-
 [connection signal="pressed" from="TitleMenu/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="TitleMenu/VBoxContainer/Settings_Button" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="TitleMenu/VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]
-[connection signal="finished" from="MainMenuMusic" to="." method="_on_main_menu_music_finished"]

@@ -10,9 +10,6 @@ extends CharacterBody2D
 @onready var collider = $CollisionShape2D
 @onready var damage_timer = $Timer
 @onready var animated_sprite = $AnimatedSprite2D
-#MAKE A BETTER WAY TO TRACK ALL THE SOUNDS CHANGES
-@onready var level = get_tree().current_scene
-@onready var sfx_player = level.get_node("SFXPlayer")
 
 func _ready() -> void:
 	damage_timer.connect("timeout", _damage_player)
@@ -57,9 +54,7 @@ func _is_player(body: Node2D) -> bool:
 func _damage_player() -> void:
 	if Game.is_game_over:
 		return
-	if sfx_player:
-		sfx_player.stream = load("res://audio/player/hurt.wav")
-		sfx_player.play()
+	AudioManager.play_sfx("res://audio/player/hurt.wav")
 	player.health.hit(damage, Color.RED)
 	return
 	
@@ -69,8 +64,7 @@ func take_damage(damage: int, critical: bool):
 	else:
 		$Health.hit(damage, Color.WHITE);
 	if($Health.health <= 0):
-		sfx_player.stream = load("res://audio/explosion.wav")
-		sfx_player.play()
+		AudioManager.play_sfx("res://audio/explosion.wav")
 		drop_loot()
 		queue_free()
 		
