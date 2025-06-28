@@ -64,11 +64,10 @@ func shoot(target: CharacterBody2D):
 	get_tree().current_scene.add_child(bullet)
 
 func calc_buffed_stats():
-	var player = get_parent()
-	current_critical_chance = base_critical_chance + player.critical_chance_boost
-	current_critical_damage = base_critical_damage + player.critical_damage_boost
-	current_weapon_range = base_weapon_range + player.weapon_range
-	current_weapon_damage = base_weapon_damage * (1 + player.damage_percentage_boost / 100.0)
+	current_critical_chance = base_critical_chance + Player1.critical_chance_boost
+	current_critical_damage = base_critical_damage + Player1.critical_damage_boost
+	current_weapon_range = base_weapon_range + Player1.weapon_range
+	current_weapon_damage = base_weapon_damage * (1 + Player1.damage_percentage_boost / 100.0)
 
 func roll_for_chance(critical_chance: float) -> bool:
 	var roll = randf()
