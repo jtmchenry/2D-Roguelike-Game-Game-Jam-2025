@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://bm1ipexiutcqk"]
+[gd_scene load_steps=32 format=3 uid="uid://bm1ipexiutcqk"]
 
 [ext_resource type="Script" uid="uid://bkwrmcwsqqh7a" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="2_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://btwi7xtoxf7i3" path="res://player/knight.png" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://c82on7wdl2lnq" path="res://components/money.tscn" id="3_yw30f"]
+[ext_resource type="PackedScene" uid="uid://bggoq8pe341u5" path="res://player/Weapon.tscn" id="5_qjkh3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kqu6x"]
 radius = 1.6
@@ -213,5 +214,7 @@ shape = SubResource("CircleShape2D_kqu6x")
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_g4c7l")
 animation = &"dead"
+
+[node name="Weapon" parent="." instance=ExtResource("5_qjkh3")]
 
 [connection signal="died" from="Health" to="." method="_on_health_died"]
