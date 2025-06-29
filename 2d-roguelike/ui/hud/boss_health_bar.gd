@@ -14,8 +14,9 @@ func _ready() -> void:
 func _process(delta) -> void:
 	label.text = "%s / %s" % [current_health, max_health]
 	if max_health == 0:
-		queue_free()
 		return
+	if current_health <= 0:
+		queue_free()
 	value = current_health * 100 / max_health
 	return 
 	
