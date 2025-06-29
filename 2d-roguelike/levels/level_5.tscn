@@ -21,6 +21,7 @@ script = ExtResource("1_ldpug")
 [node name="MonsterSpawner" parent="." instance=ExtResource("3_8vr3t")]
 number_of_spawns = 120
 number_of_waves = 6
+monster_health_pool = 120
 
 [node name="GameOver" parent="." instance=ExtResource("4_a58qw")]
 visible = false

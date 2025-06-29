@@ -24,7 +24,7 @@ func _process(delta):
 		return
 	var shape = $CollisionShape2D.shape
 	if shape is CircleShape2D:
-		shape.radius += current_weapon_range
+		shape.radius = ( current_weapon_range / 2 )
 		
 	fire_timer -= delta
 	var target = get_nearest_enemy_in_area()
