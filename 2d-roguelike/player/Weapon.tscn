@@ -19,7 +19,7 @@ scale = Vector2(-0.00201623, 0.00193292)
 texture = ExtResource("2_1lt5w")
 
 [node name="ShootingPoint" type="Marker2D" parent="Sprite2D"]
-unique_name_in_owner = true
+position = Vector2(-1983.9, -1034.7)
 
 [node name="AttackSpeed" type="Timer" parent="."]
 wait_time = 0.2

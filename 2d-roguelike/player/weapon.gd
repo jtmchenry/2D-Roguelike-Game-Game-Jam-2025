@@ -53,11 +53,10 @@ func shoot(target: CharacterBody2D):
 		return
 	AudioManager.play_sfx("shoot")
 	var bullet = bullet_scene.instantiate()
-	bullet.global_position = global_position
+	bullet.global_position = $Sprite2D/ShootingPoint.global_position
 	bullet.direction = (target.global_position - global_position).normalized()
 	var critical = roll_for_chance(current_critical_chance)
 	var damage = current_weapon_damage
-	bullet.critical = false
 	if critical:
 		bullet.critical = critical
 		damage = current_weapon_damage * (1 + current_critical_damage / 100.0)

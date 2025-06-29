@@ -12,4 +12,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player.money.earn(value)
 		AudioManager.play_sfx("coin")
 		collected = true
+		if roll_for_heal_chance():
+			player.health.heal(5)
 		queue_free()
+
+func roll_for_heal_chance() -> bool:
+	var roll = randf()
+	return roll < .10
