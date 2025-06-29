@@ -72,8 +72,8 @@ func take_damage(damage: int, critical: bool):
 func drop_loot():
 	for i in range(8):
 		var l = loot_scene.instantiate()
-		var x = randf_range(-50, 50)
-		var y = randf_range(-50, 50)
+		var x = randf_range(-75, 75)
+		var y = randf_range(-75, 75)
 		l.global_position = global_position + Vector2(x, y)
 		get_tree().get_root().add_child(l)
 

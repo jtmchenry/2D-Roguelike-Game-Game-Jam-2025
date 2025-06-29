@@ -1,9 +1,9 @@
 extends Area2D
 
 @export var bullet_scene: PackedScene
-var base_weapon_range: float = 200
+var base_weapon_range: float = 100
 var base_weapon_damage: int = 20
-var base_critical_chance: float = .1
+var base_critical_chance: float = .03
 var base_critical_damage: float = 50
 var base_fire_rate: float = .8
 
@@ -15,10 +15,9 @@ var current_fire_rate: float = base_fire_rate
 
 var fire_timer: float = 0.0
 
-func _ready():
-	position += Vector2(1, -2).normalized() * 20
-
 func _process(delta):
+	if not visible:
+		return
 	calc_buffed_stats()
 	if Game.is_game_over:
 		return

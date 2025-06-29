@@ -5,11 +5,12 @@ extends Control
 var shop_item_scene = preload("res://ui/shop_item.tscn")
 
 var shop_items = [
-	{"id": 1, "name": "2% Damage", "value": 2, "price": 10 },
-	{"id": 2, "name": "2% Attack Speed", "value": 2, "price": 10 },
-	{"id": 3, "name": "5% Crit Damage", "value": 5, "price": 10 },
-	{"id": 4, "name": "3% Crit Chance", "value": 3, "price": 10 },
-	{"id": 5, "name": "10 Range", "value": 10, "price": 10 }
+	{"id": 1, "name": "2% Damage", "value": 2, "price": 10, "icon": "res://icons/shop/Flexing_Muscles Emoji.png"},
+	{"id": 2, "name": "2% Attack Speed", "value": 2, "price": 25, "icon": "res://icons/shop/Grimacing.png"},
+	{"id": 3, "name": "5% Crit Damage", "value": 5, "price": 25, "icon": "res://icons/shop/Sunglasses.png"},
+	{"id": 4, "name": "3% Crit Chance", "value": 3, "price": 25, "icon": "res://icons/shop/Eyes_Emoji.png"},
+	{"id": 5, "name": "10 Range", "value": 10, "price": 10, "icon": "res://icons/shop/Hugging.png"},
+	{"id": 6, "name": "Gun", "value": 500, "price": 500, "icon": "res://icons/shop/gun_icon.png"}
 ]
 
 func _ready():

@@ -216,5 +216,18 @@ sprite_frames = SubResource("SpriteFrames_g4c7l")
 animation = &"dead"
 
 [node name="Weapon" parent="." instance=ExtResource("5_qjkh3")]
+position = Vector2(10.8, -7.8)
+
+[node name="Weapon2" parent="." instance=ExtResource("5_qjkh3")]
+visible = false
+position = Vector2(-9, -8.2)
+
+[node name="Weapon3" parent="." instance=ExtResource("5_qjkh3")]
+visible = false
+position = Vector2(-8.4, 3.4)
+
+[node name="Weapon4" parent="." instance=ExtResource("5_qjkh3")]
+visible = false
+position = Vector2(10.6, 2.6)
 
 [connection signal="died" from="Health" to="." method="_on_health_died"]

@@ -30,7 +30,6 @@ func _process(delta: float) -> void:
 func _on_wave_timer_timeout() -> void:
 	within_wave_timer.start()
 
-
 func _on_within_wave_timer_timeout() -> void:
 	if remaining_spawns == 0:
 		wave_timer.stop()
@@ -43,7 +42,6 @@ func _on_within_wave_timer_timeout() -> void:
 	if spawned_in_wave == spawns_per_wave:
 		within_wave_timer.stop()
 		spawned_in_wave = 0
-	
 
 func _spawn_monster():
 	var x = randf_range(-radius / 2, radius / 2)

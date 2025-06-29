@@ -10,6 +10,9 @@ var health : int = 100
 
 #Player Inventory
 var money : int = 0
+var second_slot_weapon = false
+var third_slot_weapon = false
+var fourth_slot_weapon = false
 
 func reset_player_stats():
 	critical_damage_boost = 0
