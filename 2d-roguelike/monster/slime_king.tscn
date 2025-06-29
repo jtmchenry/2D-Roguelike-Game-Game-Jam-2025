@@ -86,6 +86,7 @@ script = ExtResource("1_s7rld")
 loot_scene = ExtResource("2_1m7mr")
 
 [node name="Health" parent="." instance=ExtResource("2_6hrdv")]
+unique_name_in_owner = true
 max_health = 10000
 health = 10000
 

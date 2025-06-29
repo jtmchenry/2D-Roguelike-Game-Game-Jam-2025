@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0ypgwdfpryi3"]
+[gd_scene load_steps=10 format=3 uid="uid://d0ypgwdfpryi3"]
 
 [ext_resource type="Script" uid="uid://ce1iq8t15yidq" path="res://levels/level_1.gd" id="1_ldpug"]
 [ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_v5ho1"]
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_ldpug"]
 [ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_8vr3t"]
+[ext_resource type="PackedScene" uid="uid://dw8cuk8smbd21" path="res://ui/hud/boss_level_hud.tscn" id="3_v5ho1"]
 [ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="4_a58qw"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_ij65d"]
 [ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="8_hv08k"]
@@ -13,6 +14,8 @@
 script = ExtResource("1_ldpug")
 
 [node name="Map" parent="." instance=ExtResource("1_v5ho1")]
+
+[node name="BossLevelHud" parent="." instance=ExtResource("3_v5ho1")]
 
 [node name="HUD" parent="." instance=ExtResource("2_ldpug")]
 
