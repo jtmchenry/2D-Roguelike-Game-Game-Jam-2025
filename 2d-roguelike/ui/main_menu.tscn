@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://70qp4cuw43e7"]
+[gd_scene load_steps=5 format=3 uid="uid://70qp4cuw43e7"]
 
 [ext_resource type="Script" uid="uid://q5444ygud4ae" path="res://ui/main_menu.gd" id="1_t7e0r"]
 [ext_resource type="PackedScene" uid="uid://cqq6jdeb50g5x" path="res://ui/settings_menu.tscn" id="2_rmr83"]
-[ext_resource type="Texture2D" uid="uid://17jtidxs85nc" path="res://levels/knight entering the dungeon background image.jpg" id="3_rmr83"]
+[ext_resource type="Texture2D" uid="uid://p1abt83fdday" path="res://sprites/backgrounds/title.jpg" id="3_wk0pr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wk0pr"]
 
 [node name="Main Menu" type="CanvasLayer"]
 script = ExtResource("1_t7e0r")
 
 [node name="SettingsMenu" parent="." instance=ExtResource("2_rmr83")]
-visible = false
 
 [node name="TitleMenu" type="Control" parent="."]
 layout_mode = 3
@@ -23,19 +24,11 @@ size_flags_horizontal = 0
 
 [node name="TextureRect" type="TextureRect" parent="TitleMenu"]
 layout_mode = 0
-offset_left = -1042.0
-offset_top = -568.0
-offset_right = 1138.0
-offset_bottom = 658.0
-texture = ExtResource("3_rmr83")
-
-[node name="Background" type="ColorRect" parent="TitleMenu"]
-layout_mode = 0
-offset_left = -2147.0
-offset_top = -1178.0
-offset_right = 2506.0
-offset_bottom = 1382.0
-color = Color(0.662745, 0.596078, 0, 0.247059)
+offset_left = -958.0
+offset_top = -687.0
+offset_right = 954.0
+offset_bottom = 1862.0
+texture = ExtResource("3_wk0pr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TitleMenu"]
 layout_mode = 1
@@ -66,6 +59,17 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Quit
 "
+
+[node name="Label" type="Label" parent="TitleMenu"]
+layout_mode = 2
+offset_left = -442.0
+offset_top = -447.0
+offset_right = 391.0
+offset_bottom = -263.0
+theme_override_constants/outline_size = 56
+theme_override_font_sizes/font_size = 134
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wk0pr")
+text = "Bullet Knight"
 
 [connection signal="pressed" from="TitleMenu/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="TitleMenu/VBoxContainer/Settings_Button" to="." method="_on_settings_button_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://17jtidxs85nc"
-path="res://.godot/imported/knight entering the dungeon background image.jpg-a70eaa509da7da2532104c15e1f5afec.ctex"
+uid="uid://p1abt83fdday"
+path="res://.godot/imported/title.jpg-38b66949dff7bf5aa813b0d5d050718d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/knight entering the dungeon background image.jpg"
-dest_files=["res://.godot/imported/knight entering the dungeon background image.jpg-a70eaa509da7da2532104c15e1f5afec.ctex"]
+source_file="res://sprites/backgrounds/title.jpg"
+dest_files=["res://.godot/imported/title.jpg-38b66949dff7bf5aa813b0d5d050718d.ctex"]
 
 [params]
 
