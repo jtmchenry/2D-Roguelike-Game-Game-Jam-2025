@@ -1,11 +1,11 @@
 extends Node
 
 #Player Stats
-var critical_damage_boost : float = 10000
-var critical_chance_boost : float = 100
-var attack_speed_boost : float = 50
+var critical_damage_boost : float = 0
+var critical_chance_boost : float = 0
+var attack_speed_boost : float = 0
 var weapon_range : int = 0
-var damage_percentage_boost :float = 1000
+var damage_percentage_boost :float = 0
 var health : int = 100
 
 #Player Inventory
