@@ -30,6 +30,7 @@ visible = false
 bullet_scene = ExtResource("5_n46q3")
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_08mmt")]
+visible = false
 player = NodePath("../Player")
 
 [connection signal="all_monsters_killed" from="MonsterSpawner" to="." method="_on_monster_spawner_all_monsters_killed"]
