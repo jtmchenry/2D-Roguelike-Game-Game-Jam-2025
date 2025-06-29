@@ -7,8 +7,14 @@ var is_hurt = false
 @onready var health: Health = $Health
 @onready var money: Money = $Money
 @onready var animated_sprite = $KnightAnimatedSprite
+@onready var guns_slots: Array = [$Weapon, $Weapon2, $Weapon3, $Weapon4]
 
 signal player_died
+
+func _ready():
+	# Sync visibility based on the equipped array
+	for i in guns_slots.size():
+		guns_slots[i].visible = Player1.equipped[i]
 
 func _physics_process(delta):
 	if Game.is_game_over:

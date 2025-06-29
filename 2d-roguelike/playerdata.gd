@@ -9,10 +9,8 @@ var damage_percentage_boost :float = 0
 var health : int = 100
 
 #Player Inventory
-var money : int = 0
-var second_slot_weapon = false
-var third_slot_weapon = false
-var fourth_slot_weapon = false
+var money : int = 50
+var equipped: Array = [true, false, false, false]
 
 func reset_player_stats():
 	critical_damage_boost = 0
@@ -34,3 +32,17 @@ func update_player_stats_on_upgrade(id: int, value: int):
 		critical_chance_boost += value
 	if id == 5:
 		weapon_range += value
+	if id == 6:
+		var free_slots = get_indices_of_false_values(equipped)
+		for weapon_number in free_slots:
+			weapon_number
+			equipped[weapon_number] = true
+			print("Equipped weapon in slot ", weapon_number)
+			return
+
+func get_indices_of_false_values(arr: Array) -> Array:
+	var indices = []
+	for i in arr.size():
+		if not arr[i]:
+			indices.append(i)
+	return indices
