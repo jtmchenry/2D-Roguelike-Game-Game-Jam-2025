@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw8cuk8smbd21"]
+
+[ext_resource type="PackedScene" uid="uid://m3w8rbelf0mi" path="res://ui/hud/boss_health_bar.tscn" id="2_07qym"]
+
+[node name="BossLevelHud" type="CanvasLayer"]
+
+[node name="BossHealthBar" parent="." instance=ExtResource("2_07qym")]
