@@ -9,8 +9,10 @@ extends CharacterBody2D
 @onready var player: Player = $"../Player"
 @onready var collider = $CollisionShape2D
 @onready var damage_timer = $Timer
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animated_sprite = $MonsterAnimatedSprite
 @onready var health_control = $Health
+
+var is_hurt = false
 
 func _ready() -> void:
 	damage_timer.connect("timeout", _damage_player)
@@ -25,7 +27,10 @@ func _physics_process(delta: float) -> void:
 	
 	if not player:
 		return
-
+	
+	if not is_hurt:
+		animated_sprite.play("idle")
+	
 	var direction = player.global_position - global_position
 	if direction.length() > 5:  # stop moving when close
 		direction = direction.normalized()
@@ -55,11 +60,14 @@ func _is_player(body: Node2D) -> bool:
 func _damage_player() -> void:
 	if Game.is_game_over:
 		return
+	player.hurt_player()
 	AudioManager.play_sfx("player_hurt")
 	player.health.hit(damage, Color.RED)
 	return
 	
 func take_damage(damage: int, critical: bool):	
+	animated_sprite.play("hurt")
+	is_hurt = true
 	if critical:
 		await $Health.hit(damage, Color.MEDIUM_PURPLE);
 	else:
@@ -79,3 +87,8 @@ func drop_loot():
 
 func set_health_value(monster_health: int):
 	health_control.set_health_value(monster_health)
+
+
+func _on_monster_animated_sprite_animation_finished() -> void:
+	if animated_sprite.animation == "hurt":
+		is_hurt = false

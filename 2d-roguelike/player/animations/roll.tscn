@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://cno4ms5acji3"]
+
+[ext_resource type="Texture2D" uid="uid://btwi7xtoxf7i3" path="res://player/knight.png" id="1_wcm6s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu7ox"]
+atlas = ExtResource("1_wcm6s")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhacl"]
+atlas = ExtResource("1_wcm6s")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tb01"]
+atlas = ExtResource("1_wcm6s")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpw1o"]
+atlas = ExtResource("1_wcm6s")
+region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16x2o"]
+atlas = ExtResource("1_wcm6s")
+region = Rect2(128, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho0cr"]
+atlas = ExtResource("1_wcm6s")
+region = Rect2(160, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbbqd"]
+atlas = ExtResource("1_wcm6s")
+region = Rect2(192, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu3n8"]
+atlas = ExtResource("1_wcm6s")
+region = Rect2(224, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4yybl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu7ox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhacl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tb01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpw1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16x2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho0cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbbqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eu3n8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Roll" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4yybl")
+frame_progress = 0.622993

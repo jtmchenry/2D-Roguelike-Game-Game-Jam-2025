@@ -2,10 +2,10 @@ extends Area2D
 
 @export var bullet_scene: PackedScene
 var base_weapon_range: float = 100
-var base_weapon_damage: int = 20
+var base_weapon_damage: int = 10
 var base_critical_chance: float = .03
 var base_critical_damage: float = 50
-var base_fire_rate: float = .8
+var base_fire_rate: float = .5
 
 var current_weapon_range: float = base_weapon_range
 var current_weapon_damage: int = base_weapon_damage
@@ -24,7 +24,7 @@ func _process(delta):
 	var shape = $CollisionShape2D.shape
 	if shape is CircleShape2D:
 		shape.radius = ( current_weapon_range / 2 )
-		
+	
 	fire_timer -= delta
 	var target = get_nearest_enemy_in_area()
 	
