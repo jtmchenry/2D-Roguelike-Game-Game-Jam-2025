@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0u2x35qxyneu"]
+
+[ext_resource type="Script" uid="uid://bv4u2dfwd51dh" path="res://monster/monster.gd" id="1_s7rld"]
+[ext_resource type="PackedScene" uid="uid://be6hi18cycgv3" path="res://monster/loot.tscn" id="2_1m7mr"]
+[ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="2_6hrdv"]
+[ext_resource type="Texture2D" uid="uid://c5i7cfnb7skog" path="res://monster/slime_green.png" id="3_1m7mr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hf21v"]
+radius = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5263"]
+radius = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck3l0"]
+atlas = ExtResource("3_1m7mr")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7lgj"]
+atlas = ExtResource("3_1m7mr")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23j4v"]
+atlas = ExtResource("3_1m7mr")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnoo8"]
+atlas = ExtResource("3_1m7mr")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wg73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck3l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7lgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23j4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnoo8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="SlimeKing" type="CharacterBody2D"]
+scale = Vector2(20, 20)
+script = ExtResource("1_s7rld")
+loot_scene = ExtResource("2_1m7mr")
+
+[node name="Health" parent="." instance=ExtResource("2_6hrdv")]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(12, 12)
+shape = SubResource("CircleShape2D_hf21v")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -6)
+scale = Vector2(12, 12)
+shape = SubResource("CircleShape2D_x5263")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_8wg73")
+animation = &"idle"
+autoplay = "idle"

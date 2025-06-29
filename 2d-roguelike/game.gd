@@ -26,6 +26,5 @@ func shop_complete():
 func game_over():
 	is_game_over = true
 	
-	
 func _current_level_scene_path() -> String:
 	return "res://levels/level_%d.tscn" % current_level

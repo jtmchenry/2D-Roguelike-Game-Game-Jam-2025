@@ -11,6 +11,14 @@ var health : int = 100
 #Player Inventory
 var money : int = 0
 
+func reset_player_stats():
+	critical_damage_boost = 0
+	critical_chance_boost = 0
+	attack_speed_boost = 0
+	weapon_range = 0
+	damage_percentage_boost = 0
+	
+	money = 0
 
 func update_player_stats_on_upgrade(id: int, value: int):
 	if id == 1:
