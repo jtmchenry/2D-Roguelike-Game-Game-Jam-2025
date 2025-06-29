@@ -53,6 +53,8 @@ script = ExtResource("1_s7rld")
 loot_scene = ExtResource("2_1m7mr")
 
 [node name="Health" parent="." instance=ExtResource("2_6hrdv")]
+max_health = 10000
+health = 10000
 
 [node name="Timer" type="Timer" parent="."]
 

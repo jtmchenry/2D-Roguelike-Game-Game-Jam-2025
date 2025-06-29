@@ -18,8 +18,8 @@ script = ExtResource("1_gwceb")
 [node name="HUD" parent="." instance=ExtResource("2_jirdo")]
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("3_btoec")]
-number_of_spawns = 10
-number_of_waves = 2
+number_of_spawns = 40
+number_of_waves = 5
 
 [node name="GameOver" parent="." instance=ExtResource("5_l53as")]
 visible = false

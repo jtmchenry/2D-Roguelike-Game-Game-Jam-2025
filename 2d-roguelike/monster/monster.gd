@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var collider = $CollisionShape2D
 @onready var damage_timer = $Timer
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var health_control = $Health
 
 func _ready() -> void:
 	damage_timer.connect("timeout", _damage_player)
@@ -60,9 +61,9 @@ func _damage_player() -> void:
 	
 func take_damage(damage: int, critical: bool):	
 	if critical:
-		$Health.hit(damage, Color.INDIGO);
+		await $Health.hit(damage, Color.MEDIUM_PURPLE);
 	else:
-		$Health.hit(damage, Color.WHITE);
+		await $Health.hit(damage, Color.WHITE);
 	if($Health.health <= 0):
 		AudioManager.play_sfx("explosion")
 		drop_loot()
@@ -75,3 +76,6 @@ func drop_loot():
 		var y = randf_range(-50, 50)
 		l.global_position = global_position + Vector2(x, y)
 		get_tree().get_root().add_child(l)
+
+func set_health_value(monster_health: int):
+	health_control.set_health_value(monster_health)

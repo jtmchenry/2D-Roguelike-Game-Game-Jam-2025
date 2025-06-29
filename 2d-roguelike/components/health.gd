@@ -10,6 +10,10 @@ class_name Health
 signal health_changed(current: int, max: int)
 signal died
 
+func set_health_value(new_max_health: int):
+	max_health = new_max_health
+	health = clamp(new_max_health, 0, max_health)
+	
 func hit(amount: int, color: Color):
 	health -= amount
 	emit_signal("health_changed", health, max_health)
