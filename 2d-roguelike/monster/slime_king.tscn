@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0u2x35qxyneu"]
+[gd_scene load_steps=16 format=3 uid="uid://c0u2x35qxyneu"]
 
 [ext_resource type="Script" uid="uid://bv4u2dfwd51dh" path="res://monster/monster.gd" id="1_s7rld"]
 [ext_resource type="PackedScene" uid="uid://be6hi18cycgv3" path="res://monster/loot.tscn" id="2_1m7mr"]
@@ -10,6 +10,22 @@ radius = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x5263"]
 radius = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkju2"]
+atlas = ExtResource("3_1m7mr")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir5j4"]
+atlas = ExtResource("3_1m7mr")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7vmi"]
+atlas = ExtResource("3_1m7mr")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le4c3"]
+atlas = ExtResource("3_1m7mr")
+region = Rect2(0, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ck3l0"]
 atlas = ExtResource("3_1m7mr")
@@ -27,8 +43,25 @@ region = Rect2(48, 24, 24, 24)
 atlas = ExtResource("3_1m7mr")
 region = Rect2(72, 24, 24, 24)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8wg73"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6hrdv"]
 animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_dkju2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir5j4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_e7vmi")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_le4c3")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ck3l0")
@@ -71,8 +104,8 @@ position = Vector2(0, -6)
 scale = Vector2(12, 12)
 shape = SubResource("CircleShape2D_x5263")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="MonsterAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
-sprite_frames = SubResource("SpriteFrames_8wg73")
-animation = &"idle"
+sprite_frames = SubResource("SpriteFrames_6hrdv")
+animation = &"hurt"
 autoplay = "idle"
