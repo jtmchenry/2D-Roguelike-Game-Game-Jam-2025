@@ -11,12 +11,28 @@ extends CharacterBody2D
 @onready var damage_timer = $Timer
 @onready var animated_sprite = $MonsterAnimatedSprite
 @onready var health_control = $Health
+@onready var slime_king = $"."
+
+@export var aoe_interval : float = 10  # seconds between AOEs
+var aoe_timer : Timer
 
 var is_hurt = false
 
 func _ready() -> void:
 	damage_timer.connect("timeout", _damage_player)
 	add_to_group("Enemies")
+	
+	if slime_king:
+		# Create and configure a timer
+		aoe_timer = Timer.new()
+		aoe_timer.wait_time = aoe_interval
+		aoe_timer.autostart = true
+		aoe_timer.one_shot = false  # so it repeats
+		add_child(aoe_timer)
+
+		# Connect the timer's timeout signal to the attack function
+		aoe_timer.timeout.connect(attack_player_with_aoe)
+
 
 func _physics_process(delta: float) -> void:
 	if Game.is_game_over:
@@ -88,6 +104,17 @@ func drop_loot():
 func set_health_value(monster_health: int):
 	health_control.set_health_value(monster_health)
 
+func attack_player_with_aoe():
+	var players = get_tree().get_nodes_in_group("player")
+	var player = players[0]
+	if player:
+		perform_aoe_on_player(player)
+
+func perform_aoe_on_player(player):
+	var aoe_scene = preload("res://monster/attacks/SlimeAcid.tscn")
+	var aoe_instance = aoe_scene.instantiate()
+	aoe_instance.global_position = player.global_position
+	get_tree().current_scene.add_child(aoe_instance)
 
 func _on_monster_animated_sprite_animation_finished() -> void:
 	if animated_sprite.animation == "hurt":
