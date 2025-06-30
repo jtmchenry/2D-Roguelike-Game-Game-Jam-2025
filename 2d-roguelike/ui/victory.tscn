@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dehj36t06o46s"]
+[gd_scene load_steps=3 format=3 uid="uid://dehj36t06o46s"]
 
 [ext_resource type="Script" uid="uid://b1ktwwk7rkrbi" path="res://ui/victory.gd" id="1_7bnjr"]
+[ext_resource type="Texture2D" uid="uid://b0cwc46qt6a1" path="res://sprites/backgrounds/Victory Screen.jpg" id="2_uhicc"]
 
 [node name="Victory" type="Control"]
 layout_mode = 3
@@ -12,6 +13,14 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7bnjr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1028.0
+offset_top = -540.0
+offset_right = 1072.0
+offset_bottom = 641.0
+texture = ExtResource("2_uhicc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -29,6 +38,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 14
 theme_override_font_sizes/font_size = 64
 text = "YOU WON"
 
@@ -37,4 +47,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Play Again"
 
+[node name="TitleScreen" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Title Screen"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
 [connection signal="pressed" from="VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="VBoxContainer/TitleScreen" to="." method="_on_title_screen_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

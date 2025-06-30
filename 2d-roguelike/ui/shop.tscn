@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://sejeiek4l7nf"]
+[gd_scene load_steps=4 format=3 uid="uid://sejeiek4l7nf"]
 
 [ext_resource type="Script" uid="uid://b57kudnbthy1h" path="res://ui/shop.gd" id="1_viryw"]
 [ext_resource type="PackedScene" uid="uid://56n6m7spdfq2" path="res://coin/coin.tscn" id="2_2v8nf"]
+[ext_resource type="Texture2D" uid="uid://dbqmq2qrol2kv" path="res://sprites/backgrounds/Shopping.png" id="3_1slnd"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -13,6 +14,14 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_viryw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -957.0
+offset_top = -583.0
+offset_right = 1089.0
+offset_bottom = 780.0
+texture = ExtResource("3_1slnd")
 
 [node name="GridContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
