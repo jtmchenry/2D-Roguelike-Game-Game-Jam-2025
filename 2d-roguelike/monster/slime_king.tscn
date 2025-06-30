@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c5i7cfnb7skog" path="res://monster/slime_green.png" id="3_1m7mr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hf21v"]
-radius = 0.5
+radius = 0.196938
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x5263"]
-radius = 0.5
+radius = 0.525066
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkju2"]
 atlas = ExtResource("3_1m7mr")
@@ -83,12 +83,14 @@ animations = [{
 [node name="SlimeKing" type="CharacterBody2D"]
 scale = Vector2(20, 20)
 script = ExtResource("1_s7rld")
+speed = 75.0
+damage = 25
 loot_scene = ExtResource("2_1m7mr")
 
 [node name="Health" parent="." instance=ExtResource("2_6hrdv")]
 unique_name_in_owner = true
-max_health = 10000
-health = 10000
+max_health = 2500
+health = 2500
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -110,3 +112,7 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_6hrdv")
 animation = &"hurt"
 autoplay = "idle"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="animation_finished" from="MonsterAnimatedSprite" to="." method="_on_monster_animated_sprite_animation_finished"]

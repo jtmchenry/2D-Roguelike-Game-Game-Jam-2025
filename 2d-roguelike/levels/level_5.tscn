@@ -29,13 +29,13 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource("5_ij65d")]
 
+[node name="SlimeKing" parent="." instance=ExtResource("10_8vr3t")]
+position = Vector2(558, 58)
+
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_hv08k")]
 visible = false
 player = NodePath("../Player")
 metadata/_edit_use_anchors_ = true
-
-[node name="SlimeKing" parent="." instance=ExtResource("10_8vr3t")]
-position = Vector2(558, 58)
 
 [connection signal="all_monsters_killed" from="MonsterSpawner" to="." method="_on_monster_spawner_all_monsters_killed"]
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
