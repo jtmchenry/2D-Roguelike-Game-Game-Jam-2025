@@ -63,11 +63,6 @@ func shoot(target: CharacterBody2D):
 	get_tree().current_scene.add_child(bullet)
 
 func calc_buffed_stats():
-	if Player1:
-		print("Player1 singleton found: ", Player1)
-	else:
-		print("Player1 is null or not found")
-	print("Type of critical_chance_boost: ", typeof(Player1.critical_chance_boost))
 	var decimal_critical_chance = Player1.critical_chance_boost / 100
 	current_critical_chance = base_critical_chance + (Player1.critical_chance_boost / 100)
 	current_critical_damage = base_critical_damage + Player1.critical_damage_boost
