@@ -89,8 +89,8 @@ loot_scene = ExtResource("2_1m7mr")
 
 [node name="Health" parent="." instance=ExtResource("2_6hrdv")]
 unique_name_in_owner = true
-max_health = 2500
-health = 2500
+max_health = 5000
+health = 5000
 
 [node name="Timer" type="Timer" parent="."]
 

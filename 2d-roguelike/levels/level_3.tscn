@@ -16,7 +16,7 @@ script = ExtResource("1_jq78i")
 [node name="HUD" parent="." instance=ExtResource("2_jq78i")]
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("3_lsnkt")]
-number_of_spawns = 75
+number_of_spawns = 80
 number_of_waves = 5
 monster_health_pool = 40
 
