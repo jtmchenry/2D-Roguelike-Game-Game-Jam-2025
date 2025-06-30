@@ -5,12 +5,12 @@ extends Control
 var shop_item_scene = preload("res://ui/shop_item.tscn")
 
 var shop_items = [
-	{"id": 1, "name": "2% Damage", "value": 2, "price": 2, "icon": "res://icons/shop/Flexing_Muscles Emoji.png"},
-	{"id": 2, "name": "2% Attack Speed", "value": 2, "price": 4, "icon": "res://icons/shop/Grimacing.png"},
-	{"id": 3, "name": "5% Crit Damage", "value": 5, "price": 4, "icon": "res://icons/shop/Sunglasses.png"},
-	{"id": 4, "name": "3% Crit Chance", "value": 3, "price": 3, "icon": "res://icons/shop/Eyes_Emoji.png"},
-	{"id": 5, "name": "10 Range", "value": 10, "price": 1, "icon": "res://icons/shop/Hugging.png"},
-	{"id": 6, "name": "Gun", "value": 50, "price": 50, "icon": "res://icons/shop/gun_icon.png"}
+	{"id": 1, "name": "2% Damage", "value": 2, "price": 2, "icon": "res://icons/shop/Flexing_Muscles Emoji.png", "hover": "Increases your base damage by 2%."},
+	{"id": 2, "name": "2% Attack Speed", "value": 2, "price": 4, "icon": "res://icons/shop/Grimacing.png", "hover": "Increases your attack speed by 2%."},
+	{"id": 3, "name": "5% Crit Damage", "value": 5, "price": 4, "icon": "res://icons/shop/Sunglasses.png", "hover": "Increases your critical damage by 5%."},
+	{"id": 4, "name": "3% Crit Chance", "value": 3, "price": 3, "icon": "res://icons/shop/Eyes_Emoji.png", "hover": "Increases your chance to land a critical hit by 3%."},
+	{"id": 5, "name": "10 Range", "value": 10, "price": 1, "icon": "res://icons/shop/Hugging.png", "hover": "Increases your range to find an enemy by 10."},
+	{"id": 6, "name": "Gun", "value": 50, "price": 50, "icon": "res://icons/shop/gun_icon.png", "hover": "Gun Stats are: Base Damage: 15, Critical Chance: 1%, Critical Damage: 50%, and Weapon Range: 100"}
 ]
 
 func _ready():
@@ -37,6 +37,10 @@ func populate_shop():
 		if item.name == "Gun": 
 			if Player1.equipped == [true, true, true, true]:
 				print("You have too many guns")
+				continue
+		if item.name == "3% Crit Chance":
+			if Player1.critical_chance_boost >= 99.0:
+				print("You have max Critical Chance")
 				continue
 		var item_instance = shop_item_scene.instantiate()
 		grid_container.add_child(item_instance)
