@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c5i7cfnb7skog" path="res://monster/slime_green.png" id="3_1m7mr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hf21v"]
-radius = 0.196938
+radius = 0.487518
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x5263"]
 radius = 0.525066
@@ -46,16 +46,16 @@ region = Rect2(72, 24, 24, 24)
 [sub_resource type="SpriteFrames" id="SpriteFrames_6hrdv"]
 animations = [{
 "frames": [{
-"duration": 2.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_dkju2")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ir5j4")
 }, {
-"duration": 2.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_e7vmi")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_le4c3")
 }],
 "loop": false,
@@ -83,7 +83,7 @@ animations = [{
 [node name="SlimeKing" type="CharacterBody2D"]
 scale = Vector2(20, 20)
 script = ExtResource("1_s7rld")
-speed = 75.0
+speed = 200.0
 damage = 25
 loot_scene = ExtResource("2_1m7mr")
 

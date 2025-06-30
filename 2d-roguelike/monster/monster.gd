@@ -60,9 +60,7 @@ func _is_player(body: Node2D) -> bool:
 func _damage_player() -> void:
 	if Game.is_game_over:
 		return
-	player.hurt_player()
-	AudioManager.play_sfx("player_hurt")
-	player.health.hit(damage, Color.RED)
+	player.hurt_player(damage)
 	return
 	
 func take_damage(damage: int, critical: bool):	
@@ -78,12 +76,15 @@ func take_damage(damage: int, critical: bool):
 		queue_free()
 		
 func drop_loot():
-	for i in range(8):
+	var number = randf_range(1, 5)
+	for i in range(number):
 		var l = loot_scene.instantiate()
 		var x = randf_range(-75, 75)
 		var y = randf_range(-75, 75)
 		l.global_position = global_position + Vector2(x, y)
 		get_tree().get_root().add_child(l)
+
+
 
 func set_health_value(monster_health: int):
 	health_control.set_health_value(monster_health)

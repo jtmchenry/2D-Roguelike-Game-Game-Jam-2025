@@ -35,7 +35,6 @@ func _on_within_wave_timer_timeout() -> void:
 		wave_timer.stop()
 		within_wave_timer.stop()
 		return
-	
 	_spawn_monster()
 	remaining_spawns -= 1
 	spawned_in_wave += 1

@@ -4,6 +4,9 @@ class_name Coin
 @export var value: int = 1
 var collected := false
 
+func _ready():
+	add_to_group("coins")
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if collected:
 		return
@@ -13,9 +16,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		AudioManager.play_sfx("coin")
 		collected = true
 		if roll_for_heal_chance():
-			player.health.heal(5)
+			player.health.heal(2)
 		queue_free()
 
 func roll_for_heal_chance() -> bool:
 	var roll = randf()
-	return roll < .10
+	return roll < .20

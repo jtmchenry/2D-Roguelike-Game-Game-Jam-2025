@@ -14,6 +14,8 @@ func level_complete():
 		get_tree().change_scene_to_file("res://ui/victory.tscn")
 		return
 	current_level += 1
+	for coin in get_tree().get_nodes_in_group("coins"):
+		coin.queue_free()
 	get_tree().change_scene_to_file("res://ui/shop.tscn")
 	
 #TODO LATER
@@ -24,6 +26,8 @@ func shop_complete():
 	get_tree().change_scene_to_file(_current_level_scene_path())
 	
 func game_over():
+	for coin in get_tree().get_nodes_in_group("coins"):
+		coin.queue_free()
 	is_game_over = true
 	
 func _current_level_scene_path() -> String:
