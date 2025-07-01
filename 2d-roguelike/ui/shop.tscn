@@ -54,9 +54,17 @@ theme_override_font_sizes/font_size = 34
 text = "0"
 horizontal_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = 598.0
+offset_top = -339.0
+offset_right = 815.0
+offset_bottom = -170.0
+color = Color(0.0980392, 0.0980392, 0.0745098, 0.862745)
+
 [node name="VBoxContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 584.0
+offset_left = 619.0
 offset_top = -325.0
 offset_right = 897.0
 offset_bottom = 214.0
