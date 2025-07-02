@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctpnyo0kp6j6j"]
+[gd_scene load_steps=8 format=3 uid="uid://ctpnyo0kp6j6j"]
 
 [ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_fxq3v"]
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_4gm13"]
 [ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_qnp4g"]
+[ext_resource type="PackedScene" uid="uid://ex4un0u0516" path="res://monster/purple_slime/purple_slime.tscn" id="4_4gm13"]
 [ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="4_ho0ug"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_lxcpb"]
 [ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="6_vko6h"]
@@ -16,6 +17,7 @@
 [node name="MonsterSpawner" parent="." instance=ExtResource("3_qnp4g")]
 number_of_spawns = 400
 number_of_waves = 8
+spawn_scene = ExtResource("4_4gm13")
 monster_health_pool = 100
 
 [node name="GameOver" parent="." instance=ExtResource("4_ho0ug")]

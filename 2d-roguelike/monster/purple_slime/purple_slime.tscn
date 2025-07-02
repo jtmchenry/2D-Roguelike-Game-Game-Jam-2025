@@ -139,7 +139,6 @@ autoplay = "Idle"
 shape = SubResource("CircleShape2D_eehft")
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

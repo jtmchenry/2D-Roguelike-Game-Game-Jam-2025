@@ -5,7 +5,7 @@ extends Enemy
 @export var dash_duration = 0.5
 @export var dash_speed = 600.0
 
-@onready var animated_sprite = $PurpleSlimeAnimatedSprite
+@onready var animated_sprite = $SlimeQueenAnimatedSprite
 
 func _ready():
 	damage_timer.connect("timeout", _damage_player)
@@ -32,7 +32,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if(_is_player(body)):
 		damage_timer.stop()
 
-func _on_purple_slime_animated_sprite_animation_finished() -> void:
+func _on_slime_queen_animated_sprite_animation_finished() -> void:
 	if animated_sprite.animation == "Hurt":
 		is_hurt = false
 		animated_sprite.play("Idle")

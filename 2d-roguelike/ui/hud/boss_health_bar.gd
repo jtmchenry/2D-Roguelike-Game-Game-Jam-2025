@@ -3,7 +3,7 @@ class_name BossHealthBar
 
 var max_health: int = 0
 var current_health: int = 0
-@onready var health_src: Health = get_node("/root/Level5/SlimeKing/Health")
+@onready var health_src: Health = get_node("/root/Level10/SlimeKing/Health")
 @onready var label: Label = $Label
 
 func _ready() -> void:

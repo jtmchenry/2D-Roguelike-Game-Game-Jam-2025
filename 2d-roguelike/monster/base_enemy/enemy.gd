@@ -13,7 +13,6 @@ var dash_direction = Vector2.ZERO
 var timer = 0.0
 
 @onready var damage_timer = $Timer
-@onready var animated_sprite = $PurpleSlimeAnimatedSprite
 @onready var health_control = $Health
 
 var is_hurt = false
@@ -28,7 +27,6 @@ func _damage_player() -> void:
 	return
 	
 func take_damage(damage: int, critical: bool):	
-	animated_sprite.play("Hurt")
 	is_hurt = true
 	if critical:
 		await $Health.hit(damage, Color.MEDIUM_PURPLE);
