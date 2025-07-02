@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_jirdo"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="3_bt44k"]
 [ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_btoec"]
-[ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/monster.tscn" id="5_3sk1a"]
+[ext_resource type="PackedScene" uid="uid://dy7xk4id5djc6" path="res://monster/spawn.tscn" id="5_08mmt"]
 [ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="5_l53as"]
 
 [node name="Level1" type="Node2D"]
@@ -19,11 +19,7 @@ script = ExtResource("1_gwceb")
 [node name="MonsterSpawner" parent="." instance=ExtResource("3_btoec")]
 number_of_spawns = 50
 number_of_waves = 5
-
-[node name="MonsterSpawner2" parent="." instance=ExtResource("3_btoec")]
-number_of_spawns = 50
-number_of_waves = 5
-spawn_scene = ExtResource("5_3sk1a")
+spawn_scene = ExtResource("5_08mmt")
 
 [node name="GameOver" parent="." instance=ExtResource("5_l53as")]
 visible = false
@@ -35,5 +31,4 @@ visible = false
 player = NodePath("../Player")
 
 [connection signal="all_monsters_killed" from="MonsterSpawner" to="." method="_on_monster_spawner_all_monsters_killed"]
-[connection signal="all_monsters_killed" from="MonsterSpawner2" to="." method="_on_monster_spawner_all_monsters_killed"]
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]

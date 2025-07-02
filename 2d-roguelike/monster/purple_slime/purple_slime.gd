@@ -33,3 +33,5 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_purple_slime_animated_sprite_animation_finished() -> void:
 	if animated_sprite.animation == "Hurt":
 		is_hurt = false
+	if animated_sprite.animation == "Spawning":
+		state_machine.change_state(get_node("StateMachine/Approach"))

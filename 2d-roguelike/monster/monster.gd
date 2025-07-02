@@ -14,18 +14,6 @@ extends CharacterBody2D
 
 var is_hurt = false
 
-#Lol dashing
-var is_dashing: bool = false
-var dash_timer: float = 0.0
-var cooldown_timer: float = 0.0
-var dash_direction: Vector2 = Vector2.ZERO
-
-@export var move_speed: float = 200.0       # Speed when approaching
-@export var dash_speed: float = 600.0       # Speed during dash
-@export var dash_duration: float = 1      # How long the dash lasts
-@export var windup_time: float = 0.5        # How long the monster waits before dashing
-@export var dash_trigger_distance: float = 200.0 # Start wind-up when this close to player
-
 enum State { FOLLOW }
 var current_state = State.FOLLOW
 
@@ -110,5 +98,5 @@ func set_health_value(monster_health: int):
 func approach_player(delta):
 	if player:
 		var direction = (player.global_position - global_position).normalized()
-		velocity = direction * move_speed
+		velocity = direction * speed
 		move_and_slide()
