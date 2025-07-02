@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterType" load_steps=2 format=3 uid="uid://dpcfyffnq82ad"]
+
+[ext_resource type="Script" uid="uid://bauf825ohhbuc" path="res://player/characters/character_type.gd" id="1_dulho"]
+
+[resource]
+script = ExtResource("1_dulho")
+name = ""
+description = ""
+base_health = 0
+base_mana = 0
+special_ability = ""
+metadata/_custom_type_script = "uid://bauf825ohhbuc"

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://gxofa4w3vhy5"]
+
+[ext_resource type="Script" uid="uid://b8ldg8yf3x7xh" path="res://ui/character_select/character_select.gd" id="1_o7qwi"]
+[ext_resource type="PackedScene" uid="uid://pdppokcut6va" path="res://ui/character_select/character_card.tscn" id="2_ohdmo"]
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_o7qwi")
+card_scene = ExtResource("2_ohdmo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1928.0
+offset_bottom = 1072.0
+color = Color(0, 0, 0, 0.407843)
+
+[node name="DetailPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 714.0
+offset_top = 47.0
+offset_right = 1279.0
+offset_bottom = 612.0
+
+[node name="Details" type="VBoxContainer" parent="DetailPanel"]
+layout_mode = 0
+offset_right = 559.0
+offset_bottom = 559.0
+
+[node name="CardContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 813.0
+offset_top = 648.0
+offset_right = 1188.0
+offset_bottom = 1023.0
+columns = 4
