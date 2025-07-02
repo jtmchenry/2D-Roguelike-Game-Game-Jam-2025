@@ -37,7 +37,6 @@ func update_player_stats_on_upgrade(id: int, value: int):
 	if id == 6:
 		var free_slots = get_indices_of_false_values(equipped)
 		for weapon_number in free_slots:
-			weapon_number
 			equipped[weapon_number] = true
 			print("Equipped weapon in slot ", weapon_number)
 			return

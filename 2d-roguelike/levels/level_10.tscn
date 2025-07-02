@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_x27qk"]
 [ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_5n8do"]
 [ext_resource type="PackedScene" uid="uid://dw8cuk8smbd21" path="res://ui/hud/boss_level_hud.tscn" id="3_vndwe"]
-[ext_resource type="PackedScene" uid="uid://bpoydviw0o6xq" path="res://monster/bosses/slime_queen.tscn" id="4_gn8iv"]
+[ext_resource type="PackedScene" uid="uid://bpoydviw0o6xq" path="res://monster/bosses/slime_queen/slime_queen.tscn" id="4_gn8iv"]
 [ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="4_p7y1e"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_vndwe"]
 [ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="6_gn8iv"]
@@ -29,10 +29,10 @@ position = Vector2(-650, -53)
 [node name="HUD" parent="." instance=ExtResource("2_x27qk")]
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("3_5n8do")]
-number_of_spawns = 800
-number_of_waves = 20
+number_of_spawns = 350
+number_of_waves = 10
 spawn_scene = ExtResource("7_vndwe")
-monster_health_pool = 120
+monster_health_pool = 400
 
 [node name="GameOver" parent="." instance=ExtResource("4_p7y1e")]
 visible = false

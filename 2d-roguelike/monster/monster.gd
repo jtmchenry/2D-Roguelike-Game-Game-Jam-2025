@@ -1,12 +1,10 @@
 extends CharacterBody2D
 
-#@export var floating_text_scene: PackedScene
-
 @export var speed := 50.0
 @export var damage := 10
 @export var loot_scene: PackedScene
 
-@onready var player: Player = $"../Player"
+var player = null
 @onready var collider = $CollisionShape2D
 @onready var damage_timer = $Timer
 @onready var animated_sprite = $MonsterAnimatedSprite

@@ -18,7 +18,7 @@ script = ExtResource("1_at1ld")
 [node name="MonsterSpawner" parent="." instance=ExtResource("3_sd18g")]
 number_of_spawns = 66
 number_of_waves = 6
-monster_health_pool = 30
+monster_health_pool = 40
 
 [node name="GameOver" parent="." instance=ExtResource("4_vm7no")]
 visible = false

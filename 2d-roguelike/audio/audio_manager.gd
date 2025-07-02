@@ -16,12 +16,12 @@ func _ready():
 	_create_sfx_player("coin", "res://audio/coin.wav")
 	_create_sfx_player("player_hurt", "res://audio/player/hurt.wav")
 
-func _create_sfx_player(name: String, stream_path: String):
+func _create_sfx_player(song_name: String, stream_path: String):
 	var player = AudioStreamPlayer.new()
 	player.stream = load(stream_path)
 	player.bus = "SFX"  # make sure you have a SFX bus
 	add_child(player)
-	sfx_players[name] = player
+	sfx_players[song_name] = player
 
 func play_music(music_file: String):
 	if music_file == null:

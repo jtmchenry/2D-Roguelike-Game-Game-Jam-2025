@@ -137,6 +137,8 @@ autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eehft")
+one_way_collision = true
+one_way_collision_margin = 0.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2

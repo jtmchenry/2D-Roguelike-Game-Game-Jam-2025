@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctpnyo0kp6j6j"]
+[gd_scene load_steps=9 format=3 uid="uid://ctpnyo0kp6j6j"]
 
 [ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_fxq3v"]
+[ext_resource type="Script" uid="uid://ce1iq8t15yidq" path="res://levels/level_1.gd" id="1_qnp4g"]
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_4gm13"]
 [ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_qnp4g"]
 [ext_resource type="PackedScene" uid="uid://ex4un0u0516" path="res://monster/purple_slime/purple_slime.tscn" id="4_4gm13"]
@@ -9,16 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="6_vko6h"]
 
 [node name="Level8" type="Node2D"]
+script = ExtResource("1_qnp4g")
 
 [node name="Map" parent="." instance=ExtResource("1_fxq3v")]
 
 [node name="HUD" parent="." instance=ExtResource("2_4gm13")]
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("3_qnp4g")]
-number_of_spawns = 400
+number_of_spawns = 250
 number_of_waves = 8
 spawn_scene = ExtResource("4_4gm13")
-monster_health_pool = 100
+monster_health_pool = 250
 
 [node name="GameOver" parent="." instance=ExtResource("4_ho0ug")]
 visible = false
@@ -29,3 +31,5 @@ visible = false
 visible = false
 player = NodePath("../Player")
 metadata/_edit_use_anchors_ = true
+
+[connection signal="all_monsters_killed" from="MonsterSpawner" to="." method="_on_monster_spawner_all_monsters_killed"]
