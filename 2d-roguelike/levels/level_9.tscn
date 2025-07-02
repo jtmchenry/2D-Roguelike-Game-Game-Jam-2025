@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://poij0wnbc0pj"]
+
+[ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_ylt4s"]
+[ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_076sl"]
+[ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_x8804"]
+[ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="4_a72wi"]
+[ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_lh5ve"]
+[ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="6_a4lof"]
+
+[node name="Level9" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_ylt4s")]
+
+[node name="HUD" parent="." instance=ExtResource("2_076sl")]
+
+[node name="MonsterSpawner" parent="." instance=ExtResource("3_x8804")]
+number_of_spawns = 600
+number_of_waves = 8
+monster_health_pool = 100
+
+[node name="GameOver" parent="." instance=ExtResource("4_a72wi")]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("5_lh5ve")]
+
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_a4lof")]
+visible = false
+player = NodePath("../Player")
+metadata/_edit_use_anchors_ = true
