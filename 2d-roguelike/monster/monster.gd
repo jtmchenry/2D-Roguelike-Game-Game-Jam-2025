@@ -14,35 +14,55 @@ extends CharacterBody2D
 
 var is_hurt = false
 
+#Lol dashing
+var is_dashing: bool = false
+var dash_timer: float = 0.0
+var cooldown_timer: float = 0.0
+var dash_direction: Vector2 = Vector2.ZERO
+
+@export var move_speed: float = 200.0       # Speed when approaching
+@export var dash_speed: float = 600.0       # Speed during dash
+@export var dash_duration: float = 1      # How long the dash lasts
+@export var windup_time: float = 0.5        # How long the monster waits before dashing
+@export var dash_trigger_distance: float = 200.0 # Start wind-up when this close to player
+
+enum State { APPROACH, WINDUP, DASH }
+var current_state = State.APPROACH
+
+var timer: float = 0.0
+
 func _ready() -> void:
 	damage_timer.connect("timeout", _damage_player)
 	add_to_group("Enemies")
+	if not player:
+		var players = get_tree().get_nodes_in_group("player")
+		player = players[0]
 
 func _physics_process(delta: float) -> void:
 	if Game.is_game_over:
 		return
-	if not player:
-		var players = get_tree().get_nodes_in_group("player")
-		player = players[0]
 	
 	if not player:
 		return
 	
 	if not is_hurt:
 		animated_sprite.play("idle")
+		
+	match current_state:
+		State.APPROACH:
+			approach_player(delta)
+		State.WINDUP:
+			windup(delta)
+		State.DASH:
+			do_dash(delta)
 	
 	var direction = player.global_position - global_position
-	if direction.length() > 5:  # stop moving when close
-		direction = direction.normalized()
-		velocity = direction * speed
-	else:
-		velocity = Vector2.ZERO
 		
 	if direction.x > 0:
 		animated_sprite.flip_h = false
 	elif direction.x < 0:
 		animated_sprite.flip_h = true
-
+	
 	move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -84,10 +104,38 @@ func drop_loot():
 		l.global_position = global_position + Vector2(x, y)
 		get_tree().get_root().add_child(l)
 
-
-
 func set_health_value(monster_health: int):
 	health_control.set_health_value(monster_health)
+
+func approach_player(delta):
+	if not player:
+		return
+
+	var to_player = player.global_position - global_position
+	if to_player.length() <= dash_trigger_distance:
+		current_state = State.WINDUP
+		timer = windup_time
+		velocity = Vector2.ZERO
+	else:
+		velocity = to_player.normalized() * move_speed
+
+func windup(delta):
+	timer -= delta
+	velocity = Vector2.ZERO  # stay still
+	if timer <= 0:
+		if player:
+			dash_direction = (player.global_position - global_position).normalized()
+		else:
+			dash_direction = Vector2.RIGHT  # fallback
+		current_state = State.DASH
+		timer = dash_duration
+
+func do_dash(delta):
+	velocity = dash_direction * dash_speed
+	timer -= delta
+	if timer <= 0:
+		current_state = State.APPROACH
+		velocity = Vector2.ZERO
 
 
 func _on_monster_animated_sprite_animation_finished() -> void:
