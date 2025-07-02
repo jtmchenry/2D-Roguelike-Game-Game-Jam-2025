@@ -26,8 +26,8 @@ var dash_direction: Vector2 = Vector2.ZERO
 @export var windup_time: float = 0.5        # How long the monster waits before dashing
 @export var dash_trigger_distance: float = 200.0 # Start wind-up when this close to player
 
-enum State { APPROACH, WINDUP, DASH }
-var current_state = State.APPROACH
+enum State { FOLLOW }
+var current_state = State.FOLLOW
 
 var timer: float = 0.0
 
@@ -49,12 +49,8 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("idle")
 		
 	match current_state:
-		State.APPROACH:
+		State.FOLLOW:
 			approach_player(delta)
-		State.WINDUP:
-			windup(delta)
-		State.DASH:
-			do_dash(delta)
 	
 	var direction = player.global_position - global_position
 		
@@ -73,6 +69,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if(_is_player(body)):
 		damage_timer.stop()
+		
+func _on_monster_animated_sprite_animation_finished() -> void:
+	if animated_sprite.animation == "hurt":
+		is_hurt = false
 
 func _is_player(body: Node2D) -> bool:
 	return player == body
@@ -108,36 +108,7 @@ func set_health_value(monster_health: int):
 	health_control.set_health_value(monster_health)
 
 func approach_player(delta):
-	if not player:
-		return
-
-	var to_player = player.global_position - global_position
-	if to_player.length() <= dash_trigger_distance:
-		current_state = State.WINDUP
-		timer = windup_time
-		velocity = Vector2.ZERO
-	else:
-		velocity = to_player.normalized() * move_speed
-
-func windup(delta):
-	timer -= delta
-	velocity = Vector2.ZERO  # stay still
-	if timer <= 0:
-		if player:
-			dash_direction = (player.global_position - global_position).normalized()
-		else:
-			dash_direction = Vector2.RIGHT  # fallback
-		current_state = State.DASH
-		timer = dash_duration
-
-func do_dash(delta):
-	velocity = dash_direction * dash_speed
-	timer -= delta
-	if timer <= 0:
-		current_state = State.APPROACH
-		velocity = Vector2.ZERO
-
-
-func _on_monster_animated_sprite_animation_finished() -> void:
-	if animated_sprite.animation == "hurt":
-		is_hurt = false
+	if player:
+		var direction = (player.global_position - global_position).normalized()
+		velocity = direction * move_speed
+		move_and_slide()
