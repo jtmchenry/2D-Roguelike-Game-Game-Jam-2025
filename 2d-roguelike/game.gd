@@ -10,6 +10,11 @@ func start():
 	get_tree().change_scene_to_file(_current_level_scene_path())
 	
 func level_complete():
+	var slime_king = get_tree().current_scene.get_node_or_null("SlimeKing")
+	if slime_king != null:
+		# There is a SlimeKing, so do not complete the level
+		return
+	
 	if current_level == last_level:
 		get_tree().change_scene_to_file("res://ui/victory.tscn")
 		return

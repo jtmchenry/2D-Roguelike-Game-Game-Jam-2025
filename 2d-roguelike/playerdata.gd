@@ -19,6 +19,8 @@ func reset_player_stats():
 	weapon_range = 0
 	damage_percentage_boost = 0
 	
+	equipped = [true, false, false, false]
+	
 	money = 0
 
 func update_player_stats_on_upgrade(id: int, value: int):

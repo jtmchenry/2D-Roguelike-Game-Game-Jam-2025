@@ -44,9 +44,10 @@ func hurt_player(damage):
 		is_hurt = true
 		AudioManager.play_sfx("player_hurt")
 		health.hit(damage, Color.RED)
-		animated_sprite.play("hurt")
-		is_invulnerable = true
-		emit_signal("player_hurt")
+		if not health.health <= 0:
+			animated_sprite.play("hurt")
+			is_invulnerable = true
+			emit_signal("player_hurt")
 
 func _on_health_died() -> void:
 	animated_sprite.play("dead")

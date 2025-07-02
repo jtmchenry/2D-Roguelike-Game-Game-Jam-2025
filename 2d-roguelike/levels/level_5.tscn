@@ -20,8 +20,8 @@ script = ExtResource("1_ldpug")
 [node name="HUD" parent="." instance=ExtResource("2_ldpug")]
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("3_8vr3t")]
-number_of_spawns = 125
-number_of_waves = 5
+number_of_spawns = 200
+number_of_waves = 8
 monster_health_pool = 120
 
 [node name="GameOver" parent="." instance=ExtResource("4_a58qw")]
