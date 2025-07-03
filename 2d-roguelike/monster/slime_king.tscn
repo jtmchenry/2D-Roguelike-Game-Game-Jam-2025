@@ -83,7 +83,7 @@ animations = [{
 [node name="SlimeKing" type="CharacterBody2D"]
 scale = Vector2(20, 20)
 script = ExtResource("1_s7rld")
-speed = 200.0
+speed = 175.0
 damage = 25
 loot_scene = ExtResource("2_1m7mr")
 
