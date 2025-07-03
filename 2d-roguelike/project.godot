@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="2d Roguelike"
+config/name="Bullet Knight"
 run/main_scene="uid://70qp4cuw43e7"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.4, 0.890196, 0.364706, 1)
+boot_splash/image="uid://bgakpwth8dnee"
+config/icon="uid://bgakpwth8dnee"
 
 [autoload]
 
