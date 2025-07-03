@@ -13,7 +13,7 @@ config_version=5
 config/name="Bullet Knight"
 run/main_scene="uid://70qp4cuw43e7"
 config/features=PackedStringArray("4.4", "Forward Plus")
-boot_splash/bg_color=Color(0, 0.542195, 0.874881, 1)
+boot_splash/bg_color=Color(0.4, 0.890196, 0.364706, 1)
 boot_splash/image="uid://bgakpwth8dnee"
 config/icon="uid://bgakpwth8dnee"
 
