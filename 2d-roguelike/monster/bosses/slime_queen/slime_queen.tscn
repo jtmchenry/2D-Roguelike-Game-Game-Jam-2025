@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bh4fdriauesyv" path="res://monster/bosses/slime_queen/slime_queen.gd" id="1_3kx0w"]
 [ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="1_swr04"]
-[ext_resource type="Texture2D" uid="uid://d3lkir80mohut" path="res://monster/purple_slime/slime_purple.png" id="3_3kx0w"]
+[ext_resource type="Texture2D" uid="uid://d3lkir80mohut" path="res://monster/enemies/purple_slime/slime_purple.png" id="3_3kx0w"]
 [ext_resource type="Script" uid="uid://dpfh1jx33kkoj" path="res://monster/state/state_machine.gd" id="4_67vfh"]
 [ext_resource type="Script" uid="uid://bi14vr1xwy5s3" path="res://monster/state/approach.gd" id="5_688uc"]
 [ext_resource type="Script" uid="uid://cyufsfk7rfkeb" path="res://monster/state/dash.gd" id="6_5702n"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" load_steps=3 format=3 uid="uid://dryado1aj6kvv"]
+
+[ext_resource type="PackedScene" uid="uid://ex4un0u0516" path="res://monster/enemies/purple_slime/purple_slime.tscn" id="1_0knbn"]
+[ext_resource type="Script" uid="uid://sctdefuhxret" path="res://monster/enemy_data/enemy_spawn_data.gd" id="1_m7iqs"]
+
+[resource]
+script = ExtResource("1_m7iqs")
+scene = ExtResource("1_0knbn")
+base_weight = 2.0
+level_scale = 0.1
+max_weight = 10.0
+min_level = 2
+metadata/_custom_type_script = "uid://sctdefuhxret"

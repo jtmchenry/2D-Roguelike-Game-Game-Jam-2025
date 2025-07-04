@@ -1,0 +1,130 @@
+[gd_scene load_steps=19 format=3 uid="uid://fhqdcygqhv8m"]
+
+[ext_resource type="Script" uid="uid://dmb25q8sejtev" path="res://monster/enemies/green_slime/green_slime.gd" id="1_j3g8m"]
+[ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="2_e5x4h"]
+[ext_resource type="PackedScene" uid="uid://be6hi18cycgv3" path="res://monster/loot.tscn" id="2_fs34o"]
+[ext_resource type="Texture2D" uid="uid://c5i7cfnb7skog" path="res://monster/enemies/green_slime/slime_green.png" id="3_swvc3"]
+[ext_resource type="Script" uid="uid://dpfh1jx33kkoj" path="res://monster/state/state_machine.gd" id="5_7s004"]
+[ext_resource type="Script" uid="uid://b85nkf6tcbnkq" path="res://monster/state/following.gd" id="5_flmem"]
+[ext_resource type="Script" uid="uid://b2faabx85y11s" path="res://monster/state/spawning.gd" id="9_2uej6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkju2"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir5j4"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7vmi"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le4c3"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck3l0"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7lgj"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23j4v"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnoo8"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_le4c3"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_dkju2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir5j4")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_e7vmi")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_le4c3")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck3l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7lgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23j4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnoo8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"Spawning",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmgil"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4pste"]
+radius = 0.5
+
+[node name="Monster" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+collision_layer = 2
+script = ExtResource("1_j3g8m")
+loot_scene = ExtResource("2_fs34o")
+
+[node name="GreenSlimeAnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_le4c3")
+animation = &"Hurt"
+autoplay = "Idle"
+
+[node name="Health" parent="." instance=ExtResource("2_e5x4h")]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vmgil")
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -6)
+scale = Vector2(12, 12)
+shape = SubResource("CircleShape2D_4pste")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_7s004")
+initial_state = NodePath("Spawning")
+
+[node name="Following" type="Node" parent="StateMachine"]
+script = ExtResource("5_flmem")
+
+[node name="Spawning" type="Node" parent="StateMachine"]
+script = ExtResource("9_2uej6")
+
+[connection signal="animation_finished" from="GreenSlimeAnimatedSprite" to="." method="_on_green_slime_animated_sprite_animation_finished"]

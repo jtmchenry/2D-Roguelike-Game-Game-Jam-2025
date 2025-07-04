@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do2lw4o60m5vj"
-path="res://.godot/imported/Flexing_Muscles Emoji.png-8dfcaea2fe2f425e2ab495cfb8897337.ctex"
+uid="uid://dagtenlciwrp2"
+path="res://.godot/imported/Sunglasses.png-49b349b179afac98ff35974c646648bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/shop/Flexing_Muscles Emoji.png"
-dest_files=["res://.godot/imported/Flexing_Muscles Emoji.png-8dfcaea2fe2f425e2ab495cfb8897337.ctex"]
+source_file="res://icons/shop_icon/Sunglasses.png"
+dest_files=["res://.godot/imported/Sunglasses.png-49b349b179afac98ff35974c646648bd.ctex"]
 
 [params]
 

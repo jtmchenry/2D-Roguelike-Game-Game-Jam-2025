@@ -3,7 +3,7 @@ extends Node
 var is_game_over = false
 
 var current_level: int = 1
-var last_level = 10
+var last_level = 5
 
 func start():
 	is_game_over = false

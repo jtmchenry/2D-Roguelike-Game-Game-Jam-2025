@@ -2,10 +2,10 @@ extends Area2D
 
 @export var bullet_scene: PackedScene
 @export var base_weapon_range: float = 100
-@export var base_weapon_damage: int = 15
-@export var base_critical_chance: float = .03
+@export var base_weapon_damage: int = 10
+@export var base_critical_chance: float = .05
 @export var base_critical_damage: float = 50
-@export var base_fire_rate: float = .9
+@export var base_fire_rate: float = 1
 
 var current_weapon_range: float = base_weapon_range
 var current_weapon_damage: int = base_weapon_damage

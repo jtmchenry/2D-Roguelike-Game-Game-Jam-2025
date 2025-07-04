@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_fpvgn"]
 [ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_xn6mk"]
 [ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="4_3t5n2"]
-[ext_resource type="PackedScene" uid="uid://ex4un0u0516" path="res://monster/purple_slime/purple_slime.tscn" id="4_fpvgn"]
+[ext_resource type="PackedScene" uid="uid://ex4un0u0516" path="res://monster/enemies/purple_slime/purple_slime.tscn" id="4_fpvgn"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_v2dqh"]
 [ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="6_nu44e"]
 

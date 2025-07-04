@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bffe5n8t6fnbd"
-path="res://.godot/imported/Grimacing.png-4e86d59a8894b59c40e0e2ed6111fb11.ctex"
+path="res://.godot/imported/Grimacing.png-e9212f0cadf02231f965db1e7f7dc09d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/shop/Grimacing.png"
-dest_files=["res://.godot/imported/Grimacing.png-4e86d59a8894b59c40e0e2ed6111fb11.ctex"]
+source_file="res://icons/shop_icon/Grimacing.png"
+dest_files=["res://.godot/imported/Grimacing.png-e9212f0cadf02231f965db1e7f7dc09d.ctex"]
 
 [params]
 

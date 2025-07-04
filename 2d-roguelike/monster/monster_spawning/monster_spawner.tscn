@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://b73nfahs8gylt"]
+
+[ext_resource type="Script" uid="uid://bxa8bktea6hp1" path="res://monster/monster_spawning/monster_spawner.gd" id="1_7ceyj"]
+[ext_resource type="Script" uid="uid://sctdefuhxret" path="res://monster/enemy_data/enemy_spawn_data.gd" id="2_76tvu"]
+[ext_resource type="Resource" uid="uid://cvrm1yjw37pxi" path="res://monster/enemy_data/GreenSlime.tres" id="3_ximys"]
+[ext_resource type="Resource" uid="uid://dryado1aj6kvv" path="res://monster/enemy_data/PurpleSlime.tres" id="4_7kxqf"]
+
+[node name="MonsterSpawner" type="Node2D"]
+script = ExtResource("1_7ceyj")
+enemy_spawn_data = Array[ExtResource("2_76tvu")]([ExtResource("3_ximys"), ExtResource("4_7kxqf")])

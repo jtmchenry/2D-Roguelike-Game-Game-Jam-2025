@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dy7xk4id5djc6"]
 
 [ext_resource type="Script" uid="uid://b8u7godo0a4h6" path="res://monster/spawn.gd" id="1_8elcb"]
-[ext_resource type="Texture2D" uid="uid://c5i7cfnb7skog" path="res://monster/slime_green.png" id="1_wmu21"]
-[ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/monster.tscn" id="2_kyxdc"]
+[ext_resource type="Texture2D" uid="uid://c5i7cfnb7skog" path="res://monster/enemies/green_slime/slime_green.png" id="1_wmu21"]
+[ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/enemies/green_slime/green_slime.tscn" id="2_kyxdc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8elcb"]
 atlas = ExtResource("1_wmu21")

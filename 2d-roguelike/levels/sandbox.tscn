@@ -1,37 +1,26 @@
 [gd_scene load_steps=8 format=3 uid="uid://blr5cemfmikr4"]
 
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="1_85hcc"]
+[ext_resource type="Script" uid="uid://ce1iq8t15yidq" path="res://levels/level_1.gd" id="1_llpag"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="1_wfhpi"]
-[ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/monster.tscn" id="1_whpuv"]
-[ext_resource type="PackedScene" uid="uid://vyh83bel05jy" path="res://levels/level_1.tscn" id="2_llpag"]
-[ext_resource type="PackedScene" uid="uid://bggoq8pe341u5" path="res://player/Weapon.tscn" id="3_7he1i"]
-[ext_resource type="PackedScene" uid="uid://ppshjh2npp44" path="res://player/Bullet.tscn" id="5_0glgv"]
-[ext_resource type="PackedScene" uid="uid://56n6m7spdfq2" path="res://coin/coin.tscn" id="7_llpag"]
+[ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="2_tv6ri"]
+[ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="5_h8jws"]
+[ext_resource type="PackedScene" uid="uid://b73nfahs8gylt" path="res://monster/monster_spawning/monster_spawner.tscn" id="7_llpag"]
+[ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="7_rgshf"]
 
 [node name="Sandbox" type="Node2D"]
+script = ExtResource("1_llpag")
+
+[node name="Map" parent="." instance=ExtResource("2_tv6ri")]
 
 [node name="HUD" parent="." instance=ExtResource("1_85hcc")]
 
-[node name="Level1" parent="." instance=ExtResource("2_llpag")]
-
-[node name="Monster" parent="." instance=ExtResource("1_whpuv")]
-position = Vector2(576, 410)
-
-[node name="Monster2" parent="." instance=ExtResource("1_whpuv")]
-position = Vector2(-576, -354)
-
-[node name="Monster3" parent="." instance=ExtResource("1_whpuv")]
-position = Vector2(-592, 627)
-
-[node name="Monster4" parent="." instance=ExtResource("1_whpuv")]
-position = Vector2(459, -571)
+[node name="GameOver" parent="." instance=ExtResource("5_h8jws")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_wfhpi")]
-position = Vector2(-2, -2)
 
-[node name="Weapon" parent="Player" instance=ExtResource("3_7he1i")]
-position = Vector2(11.4, -0.8)
-bullet_scene = ExtResource("5_0glgv")
+[node name="PauseMenu" parent="." instance=ExtResource("7_rgshf")]
+visible = false
 
-[node name="Coin" parent="." instance=ExtResource("7_llpag")]
-position = Vector2(345, -104)
+[node name="MonsterSpawner" parent="." instance=ExtResource("7_llpag")]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" load_steps=3 format=3 uid="uid://cvrm1yjw37pxi"]
+
+[ext_resource type="PackedScene" uid="uid://fhqdcygqhv8m" path="res://monster/enemies/green_slime/green_slime.tscn" id="1_062bc"]
+[ext_resource type="Script" uid="uid://sctdefuhxret" path="res://monster/enemy_data/enemy_spawn_data.gd" id="1_qc4xd"]
+
+[resource]
+script = ExtResource("1_qc4xd")
+scene = ExtResource("1_062bc")
+base_weight = 1.0
+level_scale = 0.1
+max_weight = 10.0
+min_level = 1
+default_max_health = 30
+default_damage = 10
+level_scale_health = 0.0
+level_scale_damage = 0.0
+metadata/_custom_type_script = "uid://sctdefuhxret"

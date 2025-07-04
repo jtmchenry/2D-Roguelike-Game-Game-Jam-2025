@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diibaewirrao"
-path="res://.godot/imported/Hugging.png-745421e1585ea8d0fd1fd4727be8f783.ctex"
+uid="uid://cjn8x5mqxuiw"
+path="res://.godot/imported/Eyes_Emoji.png-acf4c26fce6002aed0cd88cb65a3881c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/shop/Hugging.png"
-dest_files=["res://.godot/imported/Hugging.png-745421e1585ea8d0fd1fd4727be8f783.ctex"]
+source_file="res://icons/shop_icon/Eyes_Emoji.png"
+dest_files=["res://.godot/imported/Eyes_Emoji.png-acf4c26fce6002aed0cd88cb65a3881c.ctex"]
 
 [params]
 

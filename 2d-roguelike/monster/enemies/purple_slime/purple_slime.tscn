@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://ex4un0u0516"]
 
-[ext_resource type="Texture2D" uid="uid://d3lkir80mohut" path="res://monster/purple_slime/slime_purple.png" id="1_fg0vh"]
-[ext_resource type="Script" uid="uid://d2q36l6csh35y" path="res://monster/purple_slime/purple_slime.gd" id="1_ha2up"]
+[ext_resource type="Texture2D" uid="uid://d3lkir80mohut" path="res://monster/enemies/purple_slime/slime_purple.png" id="1_fg0vh"]
+[ext_resource type="Script" uid="uid://d2q36l6csh35y" path="res://monster/enemies/purple_slime/purple_slime.gd" id="1_ha2up"]
 [ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="2_1oxdh"]
 [ext_resource type="Script" uid="uid://dpfh1jx33kkoj" path="res://monster/state/state_machine.gd" id="2_ecb4v"]
 [ext_resource type="PackedScene" uid="uid://be6hi18cycgv3" path="res://monster/loot.tscn" id="2_xjeln"]
@@ -132,8 +132,6 @@ position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_b2jf2")
 animation = &"Idle"
 autoplay = "Idle"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eehft")

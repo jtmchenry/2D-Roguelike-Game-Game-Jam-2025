@@ -35,16 +35,23 @@ func take_damage(damage: int, critical: bool):
 	if($Health.health <= 0):
 		AudioManager.play_sfx("explosion")
 		drop_loot()
-		queue_free()
 		
 func drop_loot():
-	var number = randf_range(1, 5)
-	for i in range(number):
-		var l = loot_scene.instantiate()
-		var x = randf_range(-75, 75)
-		var y = randf_range(-75, 75)
-		l.global_position = global_position + Vector2(x, y)
-		get_tree().get_root().add_child(l)
+	#var number = randf_range(1, 5)
+	#for i in range(number):
+		#var l = loot_scene.instantiate()
+		#var x = randf_range(-75, 75)
+		#var y = randf_range(-75, 75)
+		#l.global_position = global_position + Vector2(x, y)
+		#add_child(l)
+		return
 
 func set_health_value(monster_health: int):
 	health_control.set_health_value(monster_health)
+	
+func reset():
+	show()
+	is_hurt = false
+	health_control.set_health_value(health_control.max_health)
+	state_machine.change_state(get_node("StateMachine/Spawning"))
+	# reset any other state here (timer, animations, etc)

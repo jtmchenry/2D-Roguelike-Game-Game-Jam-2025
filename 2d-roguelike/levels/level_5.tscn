@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="4_a58qw"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_ij65d"]
 [ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="8_hv08k"]
-[ext_resource type="PackedScene" uid="uid://c0u2x35qxyneu" path="res://monster/slime_king.tscn" id="10_8vr3t"]
+[ext_resource type="PackedScene" uid="uid://c0u2x35qxyneu" path="res://monster/bosses/slime_king/slime_king.tscn" id="10_8vr3t"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_ldpug")

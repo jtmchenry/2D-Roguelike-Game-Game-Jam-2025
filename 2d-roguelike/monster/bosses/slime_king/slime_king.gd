@@ -79,7 +79,6 @@ func take_damage(damage: int, critical: bool):
 	if($Health.health <= 0):
 		AudioManager.play_sfx("explosion")
 		drop_loot()
-		queue_free()
 		
 func drop_loot():
 	var number = randf_range(1, 5)
