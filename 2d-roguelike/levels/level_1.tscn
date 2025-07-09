@@ -26,6 +26,7 @@ visible = false
 player = NodePath("../Player")
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("7_gwceb")]
+spawn_interval = 0.1
 
 [node name="LootSpawner" parent="." instance=ExtResource("8_l53as")]
 

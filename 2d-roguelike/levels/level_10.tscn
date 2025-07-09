@@ -19,8 +19,6 @@ script = ExtResource("1_p7y1e")
 [node name="SlimeKing" parent="." instance=ExtResource("8_gn8iv")]
 position = Vector2(558, 58)
 speed = 100.0
-chase_distance = null
-move_speed = null
 
 [node name="SlimeQueen" parent="." instance=ExtResource("4_gn8iv")]
 position = Vector2(-650, -53)

@@ -32,5 +32,6 @@ func _on_green_slime_animated_sprite_animation_finished() -> void:
 		is_hurt = false
 		animated_sprite.play("Idle")
 	if animated_sprite.animation == "Spawning":
+		is_spawning = false
 		animated_sprite.play("Idle")
 		state_machine.change_state(get_node("StateMachine/Following"))

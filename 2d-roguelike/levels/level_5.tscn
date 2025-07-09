@@ -26,8 +26,6 @@ visible = false
 
 [node name="SlimeKing" parent="." instance=ExtResource("10_8vr3t")]
 position = Vector2(558, 58)
-chase_distance = null
-move_speed = null
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_hv08k")]
 visible = false

@@ -16,12 +16,13 @@ var timer = 0.0
 @onready var health_control = $Health
 
 var is_hurt = false
+var is_spawning = true
 
 func _is_player(body: Node2D) -> bool:
 	return player == body
 	
 func _damage_player() -> void:
-	if Game.is_game_over:
+	if Game.is_game_over or is_spawning:
 		return
 	player.hurt_player(damage)
 	return
@@ -42,6 +43,7 @@ func set_health_value(monster_health: int):
 func reset():
 	show()
 	is_hurt = false
+	is_spawning = false
 	health_control.set_health_value(health_control.max_health)
 	state_machine.change_state(get_node("StateMachine/Spawning"))
 	# reset any other state here (timer, animations, etc)

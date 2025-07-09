@@ -63,7 +63,7 @@ func spawn_enemy_by_weight():
 			var enemy = get_enemy_instance(data)
 			
 			# Set position randomly around spawner
-			enemy.global_position = global_position + Vector2(randf_range(-100,100), randf_range(-100,100))
+			enemy.global_position = global_position + Vector2(randf_range(-800,800), randf_range(-800,800))
 
 			# Set health from data
 			var health_node = enemy.get_node_or_null("Health")
