@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b76m6v4n0fftf"]
+[gd_scene load_steps=9 format=3 uid="uid://b76m6v4n0fftf"]
 
 [ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_dmnu2"]
 [ext_resource type="Script" uid="uid://ce1iq8t15yidq" path="res://levels/level_1.gd" id="1_sc6c1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_8hlpj"]
 [ext_resource type="PackedScene" uid="uid://b73nfahs8gylt" path="res://monster/monster_spawning/monster_spawner.tscn" id="7_0fd8o"]
 [ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="8_5oqfd"]
+[ext_resource type="PackedScene" uid="uid://dv0rn6idss8fm" path="res://monster/loot/loot_spawner.tscn" id="8_dmnu2"]
 
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_sc6c1")
@@ -26,5 +27,7 @@ player = NodePath("../Player")
 metadata/_edit_use_anchors_ = true
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("7_0fd8o")]
+
+[node name="LootSpawner" parent="." instance=ExtResource("8_dmnu2")]
 
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]

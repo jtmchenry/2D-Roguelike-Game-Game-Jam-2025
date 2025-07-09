@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo2ier71u8xre"]
+[gd_scene load_steps=9 format=3 uid="uid://bo2ier71u8xre"]
 
 [ext_resource type="Script" uid="uid://ce1iq8t15yidq" path="res://levels/level_1.gd" id="1_nyknj"]
 [ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_vendn"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_cicrg"]
 [ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="6_5cm8g"]
 [ext_resource type="PackedScene" uid="uid://b73nfahs8gylt" path="res://monster/monster_spawning/monster_spawner.tscn" id="7_urq6f"]
+[ext_resource type="PackedScene" uid="uid://dv0rn6idss8fm" path="res://monster/loot/loot_spawner.tscn" id="8_nyknj"]
 
 [node name="Level7" type="Node2D"]
 script = ExtResource("1_nyknj")
@@ -26,3 +27,5 @@ player = NodePath("../Player")
 metadata/_edit_use_anchors_ = true
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("7_urq6f")]
+
+[node name="LootSpawner" parent="." instance=ExtResource("8_nyknj")]

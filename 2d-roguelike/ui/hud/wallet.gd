@@ -5,6 +5,7 @@ extends Control
 
 func _ready() -> void:
 	money_src.connect("money_changed", _handle_money_change)
+	money_src.amount = Player1.money
 
 func _process(delta) -> void:
 	label.text = "$%s" % Player1.money

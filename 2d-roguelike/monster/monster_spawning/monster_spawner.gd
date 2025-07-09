@@ -5,6 +5,8 @@ extends Node2D
 @export var max_active_monsters: int = 10
 @export var max_monsters: int = 50
 
+@onready var loot_spawner: Node2D = $"../LootSpawner"
+
 var active_monsters: Array[Node2D] = []
 var enemy_pools: Dictionary = {}
 var spawn_timer: Timer
@@ -68,7 +70,7 @@ func spawn_enemy_by_weight():
 			# Set health from data
 			var health_node = enemy.get_node_or_null("Health")
 			if health_node:
-				health_node.max_health = data.default_max_health
+				health_node.max_health = data.default_max_healthw
 				health_node.health = data.default_max_health
 
 			enemy.show()
@@ -93,6 +95,7 @@ func get_enemy_instance(data: EnemySpawnData) -> Node2D:
 		return instance
 
 func _on_enemy_died(scene: PackedScene, enemy: Node2D):
+	loot_spawner.spawn_coins_at(enemy.global_position)
 	if enemy.get_parent():
 		enemy.get_parent().remove_child(enemy)
 	enemy.hide()
@@ -104,7 +107,7 @@ func _on_enemy_died(scene: PackedScene, enemy: Node2D):
 	check_all_monsters_killed()
 
 func check_all_monsters_killed() -> void:
-	if total_spawned >= max_monsters and total_killed >= max_monsters:
+	if total_killed >= max_monsters:
 		emit_signal("all_monsters_killed")
 		Game.level_complete()
 
