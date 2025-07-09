@@ -9,6 +9,7 @@ func set_item_data(item):
 	item_name.text = item.name
 	price.text = "%d" % Game.game_shop_item_price_scaling(item.price)
 	buy_button.disabled = Game.game_shop_item_price_scaling(item.price) > Player1.money
+	icon.tooltip_text = item.hover 
 	icon.texture = load(item.icon)
 	icon.size = Vector2(16, 16)
 	icon.expand_mode = TextureRect.EXPAND_FIT_HEIGHT_PROPORTIONAL

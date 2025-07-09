@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://sejeiek4l7nf"]
+
+[ext_resource type="Script" uid="uid://b57kudnbthy1h" path="res://ui/shop.gd" id="1_viryw"]
+[ext_resource type="PackedScene" uid="uid://56n6m7spdfq2" path="res://coin/coin.tscn" id="2_2v8nf"]
+[ext_resource type="Texture2D" uid="uid://dbqmq2qrol2kv" path="res://sprites/backgrounds/Shopping.png" id="3_1slnd"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_viryw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -957.0
+offset_top = -583.0
+offset_right = 1089.0
+offset_bottom = 780.0
+texture = ExtResource("3_1slnd")
+
+[node name="GridContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -652.0
+offset_top = -372.0
+offset_right = 664.0
+offset_bottom = 173.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Finish" type="Button" parent="."]
+layout_mode = 2
+offset_left = -153.0
+offset_top = 354.0
+offset_right = 178.0
+offset_bottom = 396.0
+theme_override_font_sizes/font_size = 24
+text = "Finish shopping"
+
+[node name="Coin" parent="." instance=ExtResource("2_2v8nf")]
+position = Vector2(-619, 271)
+
+[node name="GoldLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -531.0
+offset_top = 249.0
+offset_right = -405.0
+offset_bottom = 296.0
+theme_override_font_sizes/font_size = 34
+text = "0"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = 598.0
+offset_top = -339.0
+offset_right = 815.0
+offset_bottom = -170.0
+color = Color(0.0980392, 0.0980392, 0.0745098, 0.862745)
+
+[node name="VBoxContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 619.0
+offset_top = -325.0
+offset_right = 897.0
+offset_bottom = 214.0
+columns = 2
+
+[node name="DamgeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Damage %"
+
+[node name="Damage" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="AttackSpeedLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Attack %"
+
+[node name="AttackSpeed" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RangeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Weapon Range"
+
+[node name="Range" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CriticalDamageLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Critical Damage %"
+
+[node name="CritDamage" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CritcalDamageLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Critical %"
+
+[node name="CritChance" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Finish" to="." method="_on_finish_pressed"]

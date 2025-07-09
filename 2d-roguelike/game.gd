@@ -32,7 +32,5 @@ func _current_level_scene_path() -> String:
 	return "res://levels/level_%d.tscn" % current_level
 
 func game_shop_item_price_scaling(base_price : int) -> int:
-	if current_level == 1:
-		return base_price
-	var current_value : int = (base_price + (current_level - 1) + (base_price * 0.1 * (current_level - 1)))
+	var current_value : int = (base_price + (current_level - 2) + (base_price * 0.1 * (current_level - 2)))
 	return current_value

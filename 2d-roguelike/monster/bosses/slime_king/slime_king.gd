@@ -21,6 +21,17 @@ func _physics_process(delta: float):
 	elif direction.x < 0:
 		animated_sprite.flip_h = true
 		
+
+func take_damage(damage: int, critical: bool):	
+	is_hurt = true
+	animated_sprite.play("Hurt")
+	if critical:
+		await $Health.hit(damage, Color.MEDIUM_PURPLE);
+	else:
+		await $Health.hit(damage, Color.WHITE);
+	if($Health.health <= 0):
+		AudioManager.play_sfx("explosion")
+		
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (_is_player(body)):
 		_damage_player()
@@ -42,5 +53,4 @@ func _on_slime_king_animated_sprite_animation_finished() -> void:
 
 func _on_health_died() -> void:
 	queue_free()
-	Game.level_complete()
 	print("Slime King was killed")

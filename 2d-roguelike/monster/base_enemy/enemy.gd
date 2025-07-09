@@ -26,16 +26,6 @@ func _damage_player() -> void:
 		return
 	player.hurt_player(damage)
 	return
-	
-func take_damage(damage: int, critical: bool):	
-	is_hurt = true
-	if critical:
-		await $Health.hit(damage, Color.MEDIUM_PURPLE);
-	else:
-		await $Health.hit(damage, Color.WHITE);
-	if($Health.health <= 0):
-		AudioManager.play_sfx("explosion")
-		
 
 func set_health_value(monster_health: int):
 	health_control.set_health_value(monster_health)

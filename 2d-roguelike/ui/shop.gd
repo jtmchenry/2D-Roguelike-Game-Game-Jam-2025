@@ -38,7 +38,7 @@ func populate_shop():
 			if Player1.equipped == [true, true, true, true]:
 				print("You have too many guns")
 				continue
-		if item.name == "3% Crit Chance":
+		if item.name == "3% Critical Chance":
 			if Player1.critical_chance_boost >= 96:
 				print("You have max Critical Chance")
 				continue
