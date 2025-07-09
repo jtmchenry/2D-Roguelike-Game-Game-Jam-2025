@@ -49,8 +49,8 @@ func populate_shop():
 		buy_button.connect("pressed", _on_buy_button_pressed.bind(item))
 
 func _on_buy_button_pressed(item):
-	if Player1.money >= item.price:
-		Player1.money -= item.price
+	if Player1.money >= Game.game_shop_item_price_scaling(item.price):
+		Player1.money -= Game.game_shop_item_price_scaling(item.price)
 		Player1.update_player_stats_on_upgrade(item.id, item.value)
 		update_gold_display()
 		populate_shop()

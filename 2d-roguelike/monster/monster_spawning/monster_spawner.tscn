@@ -8,3 +8,4 @@
 [node name="MonsterSpawner" type="Node2D"]
 script = ExtResource("1_7ceyj")
 enemy_spawn_data = Array[ExtResource("2_76tvu")]([ExtResource("3_ximys"), ExtResource("4_7kxqf")])
+spawn_interval = 0.2

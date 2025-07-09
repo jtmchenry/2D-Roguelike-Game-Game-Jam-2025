@@ -38,3 +38,7 @@ func game_over():
 
 func _current_level_scene_path() -> String:
 	return "res://levels/level_%d.tscn" % current_level
+
+func game_shop_item_price_scaling(base_price : int) -> int:
+	var current_value = (base_price + current_level + (base_price * 0.1 * current_level))
+	return current_level

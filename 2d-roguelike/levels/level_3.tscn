@@ -27,6 +27,9 @@ player = NodePath("../Player")
 metadata/_edit_use_anchors_ = true
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("7_lfnxh")]
+spawn_interval = 0.1
+max_active_monsters = 25
+max_monsters = 100
 
 [node name="LootSpawner" parent="." instance=ExtResource("8_ofchu")]
 
