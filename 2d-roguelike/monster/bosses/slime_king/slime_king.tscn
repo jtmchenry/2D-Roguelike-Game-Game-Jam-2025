@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0u2x35qxyneu"]
+[gd_scene load_steps=23 format=3 uid="uid://c0u2x35qxyneu"]
 
 [ext_resource type="Script" uid="uid://bv4u2dfwd51dh" path="res://monster/bosses/slime_king/slime_king.gd" id="1_c31uj"]
 [ext_resource type="PackedScene" uid="uid://be6hi18cycgv3" path="res://monster/loot.tscn" id="2_lr8sm"]
 [ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="3_0klv6"]
 [ext_resource type="Texture2D" uid="uid://c5i7cfnb7skog" path="res://monster/enemies/green_slime/slime_green.png" id="4_oxb35"]
+[ext_resource type="Script" uid="uid://dpfh1jx33kkoj" path="res://monster/state/state_machine.gd" id="5_oxb35"]
+[ext_resource type="Script" uid="uid://b85nkf6tcbnkq" path="res://monster/state/following.gd" id="6_mh5y3"]
+[ext_resource type="Script" uid="uid://b2faabx85y11s" path="res://monster/state/spawning.gd" id="7_bdqpt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hf21v"]
 radius = 0.487518
@@ -43,6 +46,22 @@ region = Rect2(48, 24, 24, 24)
 atlas = ExtResource("4_oxb35")
 region = Rect2(72, 24, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxb35"]
+atlas = ExtResource("4_oxb35")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh5y3"]
+atlas = ExtResource("4_oxb35")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdqpt"]
+atlas = ExtResource("4_oxb35")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdged"]
+atlas = ExtResource("4_oxb35")
+region = Rect2(72, 0, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6hrdv"]
 animations = [{
 "frames": [{
@@ -59,7 +78,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_le4c3")
 }],
 "loop": false,
-"name": &"hurt",
+"name": &"Hurt",
 "speed": 2.0
 }, {
 "frames": [{
@@ -76,16 +95,33 @@ animations = [{
 "texture": SubResource("AtlasTexture_rnoo8")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxb35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh5y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdqpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdged")
+}],
+"loop": false,
+"name": &"Spawning",
 "speed": 5.0
 }]
 
 [node name="SlimeKing" type="CharacterBody2D"]
 scale = Vector2(20, 20)
 script = ExtResource("1_c31uj")
-speed = 175.0
 damage = 25
 loot_scene = ExtResource("2_lr8sm")
+speed = 175.0
 
 [node name="Health" parent="." instance=ExtResource("3_0klv6")]
 unique_name_in_owner = true
@@ -109,12 +145,23 @@ position = Vector2(0, -6)
 scale = Vector2(12, 12)
 shape = SubResource("CircleShape2D_x5263")
 
-[node name="MonsterAnimatedSprite" type="AnimatedSprite2D" parent="."]
+[node name="SlimeKingAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_6hrdv")
-animation = &"hurt"
-autoplay = "idle"
+animation = &"Idle"
+autoplay = "Idle"
 
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_oxb35")
+initial_state = NodePath("Spawning")
+
+[node name="Following" type="Node" parent="StateMachine"]
+script = ExtResource("6_mh5y3")
+
+[node name="Spawning" type="Node" parent="StateMachine"]
+script = ExtResource("7_bdqpt")
+
+[connection signal="died" from="Health" to="." method="_on_health_died"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="animation_finished" from="MonsterAnimatedSprite" to="." method="_on_monster_animated_sprite_animation_finished"]
+[connection signal="animation_finished" from="SlimeKingAnimatedSprite" to="." method="_on_slime_king_animated_sprite_animation_finished"]

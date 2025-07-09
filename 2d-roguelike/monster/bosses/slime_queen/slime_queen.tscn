@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bpoydviw0o6xq"]
+[gd_scene load_steps=25 format=3 uid="uid://bpoydviw0o6xq"]
 
 [ext_resource type="Script" uid="uid://bh4fdriauesyv" path="res://monster/bosses/slime_queen/slime_queen.gd" id="1_3kx0w"]
 [ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="1_swr04"]
+[ext_resource type="PackedScene" uid="uid://be6hi18cycgv3" path="res://monster/loot.tscn" id="2_8ay08"]
 [ext_resource type="Texture2D" uid="uid://d3lkir80mohut" path="res://monster/enemies/purple_slime/slime_purple.png" id="3_3kx0w"]
 [ext_resource type="Script" uid="uid://dpfh1jx33kkoj" path="res://monster/state/state_machine.gd" id="4_67vfh"]
 [ext_resource type="Script" uid="uid://bi14vr1xwy5s3" path="res://monster/state/approach.gd" id="5_688uc"]
@@ -120,6 +121,7 @@ animations = [{
 [node name="SlimeQueen" type="CharacterBody2D"]
 scale = Vector2(19, 19)
 script = ExtResource("1_3kx0w")
+loot_scene = ExtResource("2_8ay08")
 
 [node name="Health" parent="." instance=ExtResource("1_swr04")]
 unique_name_in_owner = true
@@ -166,6 +168,7 @@ script = ExtResource("7_rfff3")
 [node name="Spawning" type="Node" parent="StateMachine"]
 script = ExtResource("8_6hfl2")
 
+[connection signal="died" from="Health" to="." method="_on_health_died"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="SlimeQueenAnimatedSprite" to="." method="_on_slime_queen_animated_sprite_animation_finished"]

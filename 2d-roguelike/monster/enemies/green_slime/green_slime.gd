@@ -1,10 +1,5 @@
 extends Enemy
 
-@export var dash_trigger_distance = 200.0
-@export var windup_duration = 0.5
-@export var dash_duration = 0.5
-@export var dash_speed = 600.0
-
 @onready var animated_sprite = $GreenSlimeAnimatedSprite
 
 func _ready():

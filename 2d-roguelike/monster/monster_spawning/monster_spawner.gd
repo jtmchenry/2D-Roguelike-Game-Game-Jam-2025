@@ -1,12 +1,18 @@
 extends Node2D
-
+#New Spawner Code
 @export var enemy_spawn_data: Array[EnemySpawnData]
 @export var spawn_interval: float = 2.0
-@export var max_monsters: int = 10
+@export var max_active_monsters: int = 10
+@export var max_monsters: int = 50
 
 var active_monsters: Array[Node2D] = []
 var enemy_pools: Dictionary = {}
 var spawn_timer: Timer
+
+var total_spawned: int = 0
+var total_killed: int = 0
+
+signal all_monsters_killed
 
 func _ready():
 	randomize()
@@ -21,9 +27,13 @@ func _ready():
 
 func _on_spawn_timer_timeout():
 	spawn_enemy_by_weight()
+	
+	if total_spawned >= max_monsters:
+		spawn_timer.stop()
+
 
 func spawn_enemy_by_weight():
-	if active_monsters.size() >= max_monsters:
+	if active_monsters.size() >= max_active_monsters:
 		return
 
 	var available: Array = []
@@ -55,7 +65,7 @@ func spawn_enemy_by_weight():
 			# Set position randomly around spawner
 			enemy.global_position = global_position + Vector2(randf_range(-100,100), randf_range(-100,100))
 
-			# ✅ Set health from data
+			# Set health from data
 			var health_node = enemy.get_node_or_null("Health")
 			if health_node:
 				health_node.max_health = data.default_max_health
@@ -65,7 +75,6 @@ func spawn_enemy_by_weight():
 			get_tree().current_scene.add_child(enemy)
 			active_monsters.append(enemy)
 			
-			# ✅ Reset state if the enemy has a reset() method
 			if enemy.has_method("reset"):
 				enemy.reset()
 			break
@@ -89,11 +98,16 @@ func _on_enemy_died(scene: PackedScene, enemy: Node2D):
 	enemy.hide()
 	enemy_pools[scene].append(enemy)
 	active_monsters.erase(enemy)
+	
+	total_killed += 1 
+	
+	check_all_monsters_killed()
 
-	# ✅ Check if level is complete when all monsters are dead
-	if active_monsters.is_empty():
+func check_all_monsters_killed() -> void:
+	if total_spawned >= max_monsters and total_killed >= max_monsters:
+		emit_signal("all_monsters_killed")
 		Game.level_complete()
 
 func reset_spawner():
 	active_monsters.clear()
-	# Optionally: clear pools if you want
+	enemy_pools.clear()

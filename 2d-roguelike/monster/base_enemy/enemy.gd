@@ -34,17 +34,7 @@ func take_damage(damage: int, critical: bool):
 		await $Health.hit(damage, Color.WHITE);
 	if($Health.health <= 0):
 		AudioManager.play_sfx("explosion")
-		drop_loot()
 		
-func drop_loot():
-	#var number = randf_range(1, 5)
-	#for i in range(number):
-		#var l = loot_scene.instantiate()
-		#var x = randf_range(-75, 75)
-		#var y = randf_range(-75, 75)
-		#l.global_position = global_position + Vector2(x, y)
-		#add_child(l)
-		return
 
 func set_health_value(monster_health: int):
 	health_control.set_health_value(monster_health)

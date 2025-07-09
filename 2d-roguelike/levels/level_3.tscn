@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://ce1iq8t15yidq" path="res://levels/level_1.gd" id="1_jq78i"]
 [ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_ofchu"]
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_jq78i"]
-[ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_lsnkt"]
 [ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="4_wj73x"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_0unm6"]
+[ext_resource type="PackedScene" uid="uid://b73nfahs8gylt" path="res://monster/monster_spawning/monster_spawner.tscn" id="7_lfnxh"]
 [ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="8_s3q8p"]
 
 [node name="Level3" type="Node2D"]
@@ -14,11 +14,6 @@ script = ExtResource("1_jq78i")
 [node name="Map" parent="." instance=ExtResource("1_ofchu")]
 
 [node name="HUD" parent="." instance=ExtResource("2_jq78i")]
-
-[node name="MonsterSpawner" parent="." instance=ExtResource("3_lsnkt")]
-number_of_spawns = 77
-number_of_waves = 7
-monster_health_pool = 60
 
 [node name="GameOver" parent="." instance=ExtResource("4_wj73x")]
 visible = false
@@ -30,5 +25,6 @@ visible = false
 player = NodePath("../Player")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="all_monsters_killed" from="MonsterSpawner" to="." method="_on_monster_spawner_all_monsters_killed"]
+[node name="MonsterSpawner" parent="." instance=ExtResource("7_lfnxh")]
+
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]

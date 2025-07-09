@@ -1,16 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjf3f4aic5vtf"]
+[gd_scene load_steps=11 format=3 uid="uid://cjf3f4aic5vtf"]
 
 [ext_resource type="Script" uid="uid://ce1iq8t15yidq" path="res://levels/level_1.gd" id="1_p7y1e"]
 [ext_resource type="PackedScene" uid="uid://bjq2qdpee4w3f" path="res://levels/map.tscn" id="1_rj5u4"]
 [ext_resource type="PackedScene" uid="uid://bi0wmrp1kqfxp" path="res://ui/hud/hud.tscn" id="2_x27qk"]
-[ext_resource type="PackedScene" uid="uid://2kec8tbt6m51" path="res://monster/monster_spawner.tscn" id="3_5n8do"]
 [ext_resource type="PackedScene" uid="uid://dw8cuk8smbd21" path="res://ui/hud/boss_level_hud.tscn" id="3_vndwe"]
 [ext_resource type="PackedScene" uid="uid://bpoydviw0o6xq" path="res://monster/bosses/slime_queen/slime_queen.tscn" id="4_gn8iv"]
 [ext_resource type="PackedScene" uid="uid://bjvib3spj37oo" path="res://ui/game_over.tscn" id="4_p7y1e"]
 [ext_resource type="PackedScene" uid="uid://bm1ipexiutcqk" path="res://player/player.tscn" id="5_vndwe"]
 [ext_resource type="PackedScene" uid="uid://d1a60qqk4f01k" path="res://ui/PauseMenu.tscn" id="6_gn8iv"]
-[ext_resource type="PackedScene" uid="uid://ex4un0u0516" path="res://monster/enemies/purple_slime/purple_slime.tscn" id="7_vndwe"]
 [ext_resource type="PackedScene" uid="uid://c0u2x35qxyneu" path="res://monster/bosses/slime_king/slime_king.tscn" id="8_gn8iv"]
+[ext_resource type="PackedScene" uid="uid://b73nfahs8gylt" path="res://monster/monster_spawning/monster_spawner.tscn" id="10_vndwe"]
 
 [node name="Level10" type="Node2D"]
 script = ExtResource("1_p7y1e")
@@ -20,6 +19,8 @@ script = ExtResource("1_p7y1e")
 [node name="SlimeKing" parent="." instance=ExtResource("8_gn8iv")]
 position = Vector2(558, 58)
 speed = 100.0
+chase_distance = null
+move_speed = null
 
 [node name="SlimeQueen" parent="." instance=ExtResource("4_gn8iv")]
 position = Vector2(-650, -53)
@@ -27,12 +28,6 @@ position = Vector2(-650, -53)
 [node name="BossLevelHud" parent="." instance=ExtResource("3_vndwe")]
 
 [node name="HUD" parent="." instance=ExtResource("2_x27qk")]
-
-[node name="MonsterSpawner" parent="." instance=ExtResource("3_5n8do")]
-number_of_spawns = 350
-number_of_waves = 10
-spawn_scene = ExtResource("7_vndwe")
-monster_health_pool = 400
 
 [node name="GameOver" parent="." instance=ExtResource("4_p7y1e")]
 visible = false
@@ -44,5 +39,6 @@ visible = false
 player = NodePath("../Player")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="all_monsters_killed" from="MonsterSpawner" to="." method="_on_monster_spawner_all_monsters_killed"]
+[node name="MonsterSpawner" parent="." instance=ExtResource("10_vndwe")]
+
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]

@@ -1,6 +1,6 @@
 extends Enemy
 
-@export var dash_trigger_distance = 200.0
+@export var dash_trigger_distance = 500.0
 @export var windup_duration = 0.5
 @export var dash_duration = 0.5
 @export var dash_speed = 600.0
@@ -39,3 +39,8 @@ func _on_slime_queen_animated_sprite_animation_finished() -> void:
 	if animated_sprite.animation == "Spawning":
 		animated_sprite.play("Idle")
 		state_machine.change_state(get_node("StateMachine/Approach"))
+		
+func _on_health_died() -> void:
+	queue_free()
+	
+	print("Slime Queen was killed")

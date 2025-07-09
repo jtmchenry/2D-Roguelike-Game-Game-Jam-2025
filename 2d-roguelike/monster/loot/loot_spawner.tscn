@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv0rn6idss8fm"]
+
+[ext_resource type="Script" uid="uid://dhfadt1u0t6ro" path="res://monster/loot/loot_spawner.gd" id="1_nq6tx"]
+[ext_resource type="PackedScene" uid="uid://be6hi18cycgv3" path="res://monster/loot.tscn" id="2_kbo18"]
+
+[node name="LootSpawner" type="Node2D"]
+script = ExtResource("1_nq6tx")
+coin_scene = ExtResource("2_kbo18")

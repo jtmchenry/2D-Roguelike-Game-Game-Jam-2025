@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://fhqdcygqhv8m"]
+[gd_scene load_steps=23 format=3 uid="uid://fhqdcygqhv8m"]
 
 [ext_resource type="Script" uid="uid://dmb25q8sejtev" path="res://monster/enemies/green_slime/green_slime.gd" id="1_j3g8m"]
 [ext_resource type="PackedScene" uid="uid://mnhqgkcmcr5d" path="res://components/health.tscn" id="2_e5x4h"]
@@ -40,6 +40,22 @@ region = Rect2(48, 24, 24, 24)
 atlas = ExtResource("3_swvc3")
 region = Rect2(72, 24, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs34o"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bld6s"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjovc"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s004"]
+atlas = ExtResource("3_swvc3")
+region = Rect2(72, 0, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_le4c3"]
 animations = [{
 "frames": [{
@@ -76,7 +92,19 @@ animations = [{
 "name": &"Idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs34o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bld6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjovc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s004")
+}],
 "loop": false,
 "name": &"Spawning",
 "speed": 5.0
@@ -94,15 +122,15 @@ collision_layer = 2
 script = ExtResource("1_j3g8m")
 loot_scene = ExtResource("2_fs34o")
 
-[node name="GreenSlimeAnimatedSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -12)
-sprite_frames = SubResource("SpriteFrames_le4c3")
-animation = &"Hurt"
-autoplay = "Idle"
+[node name="Timer" type="Timer" parent="."]
 
 [node name="Health" parent="." instance=ExtResource("2_e5x4h")]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="GreenSlimeAnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_le4c3")
+animation = &"Spawning"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vmgil")
@@ -128,3 +156,5 @@ script = ExtResource("5_flmem")
 script = ExtResource("9_2uej6")
 
 [connection signal="animation_finished" from="GreenSlimeAnimatedSprite" to="." method="_on_green_slime_animated_sprite_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

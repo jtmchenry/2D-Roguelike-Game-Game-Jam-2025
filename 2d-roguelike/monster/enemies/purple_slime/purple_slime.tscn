@@ -130,7 +130,7 @@ loot_scene = ExtResource("2_xjeln")
 [node name="PurpleSlimeAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_b2jf2")
-animation = &"Idle"
+animation = &"Hurt"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
