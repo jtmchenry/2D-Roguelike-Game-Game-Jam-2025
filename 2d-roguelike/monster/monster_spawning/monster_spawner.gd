@@ -70,8 +70,8 @@ func spawn_enemy_by_weight():
 			# Set health from data
 			var health_node = enemy.get_node_or_null("Health")
 			if health_node:
-				health_node.max_health = data.default_max_health
-				health_node.health = data.default_max_health
+				health_node.max_health = data.default_max_health * pow(data.level_scale_health, (Game.current_level - 1))
+				health_node.health = data.default_max_health * pow(data.level_scale_damage, (Game.current_level - 1))
 
 			enemy.show()
 			get_tree().current_scene.add_child(enemy)
