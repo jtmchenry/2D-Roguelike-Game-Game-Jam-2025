@@ -31,3 +31,5 @@ max_active_monsters = 140
 max_monsters = 300
 
 [node name="LootSpawner" parent="." instance=ExtResource("8_x8804")]
+
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
