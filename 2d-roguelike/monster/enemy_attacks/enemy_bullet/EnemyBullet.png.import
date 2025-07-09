@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rr5va0ift05q"
-path="res://.godot/imported/9b91aada2439fe652a512ded67218623.jpg-b08e494b5ee97b964492b4734955e7fa.ctex"
+uid="uid://dyaay6s331msn"
+path="res://.godot/imported/EnemyBullet.png-dc412a0fec004bef2fe12833a5fd0a64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/9b91aada2439fe652a512ded67218623.jpg"
-dest_files=["res://.godot/imported/9b91aada2439fe652a512ded67218623.jpg-b08e494b5ee97b964492b4734955e7fa.ctex"]
+source_file="res://monster/enemy_attacks/enemy_bullet/EnemyBullet.png"
+dest_files=["res://.godot/imported/EnemyBullet.png-dc412a0fec004bef2fe12833a5fd0a64.ctex"]
 
 [params]
 
