@@ -27,6 +27,8 @@ player = NodePath("../Player")
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("7_gwceb")]
 spawn_interval = 0.1
+max_active_monsters = 40
+max_monsters = 100
 
 [node name="LootSpawner" parent="." instance=ExtResource("8_l53as")]
 
