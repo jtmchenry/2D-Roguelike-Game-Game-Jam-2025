@@ -7,10 +7,10 @@ var shop_item_scene = preload("res://ui/shop_item.tscn")
 var shop_items = [
 	{"id": 1, "name": "2% Damage", "value": 2, "price": 2, "icon": "res://icons/shop_icon/Flexing_Muscles Emoji.png", "hover": "Increases your base damage by 2%."},
 	{"id": 2, "name": "2% Attack Speed", "value": 2, "price": 4, "icon": "res://icons/shop_icon/Grimacing.png", "hover": "Increases your attack speed by 2%."},
-	{"id": 3, "name": "5% Crit Damage", "value": 5, "price": 4, "icon": "res://icons/shop_icon/Sunglasses.png", "hover": "Increases your critical damage by 5%."},
-	{"id": 4, "name": "3% Crit Chance", "value": 3, "price": 3, "icon": "res://icons/shop_icon/Eyes_Emoji.png", "hover": "Increases your chance to land a critical hit by 3%."},
+	{"id": 3, "name": "5% Critical Damage", "value": 5, "price": 4, "icon": "res://icons/shop_icon/Sunglasses.png", "hover": "Increases your critical damage by 5%."},
+	{"id": 4, "name": "3% Critical Chance", "value": 3, "price": 3, "icon": "res://icons/shop_icon/Eyes_Emoji.png", "hover": "Increases your chance to land a critical hit by 3%."},
 	{"id": 5, "name": "10 Range", "value": 10, "price": 1, "icon": "res://icons/shop_icon/Hugging.png", "hover": "Increases your range to find an enemy by 10."},
-	{"id": 6, "name": "Gun", "value": 50, "price": 50, "icon": "res://icons/shop_icon/gun_icon.png", "hover": "Gun Stats are: Base Damage: 15, Critical Chance: 1%, Critical Damage: 50%, and Weapon Range: 100"}
+	{"id": 6, "name": "Gun", "value": 50, "price": 50, "icon": "res://icons/shop_icon/gun_icon.png", "hover": "Gun Stats are: Base Damage: 10, Critical Chance: 5%, Critical Damage: 50%, and Weapon Range: 100"}
 ]
 
 func _ready():
@@ -54,7 +54,7 @@ func _on_buy_button_pressed(item):
 		Player1.update_player_stats_on_upgrade(item.id, item.value)
 		update_gold_display()
 		populate_shop()
-		print("Bought %s for %d gold!" % [item.name, item.price])
+		print("Bought %s for %d gold!" % [item.name, Game.game_shop_item_price_scaling(item.price)])
 	else:
 		print("Not enough gold!")
 

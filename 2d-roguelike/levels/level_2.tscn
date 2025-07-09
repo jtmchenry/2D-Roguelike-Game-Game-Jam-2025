@@ -28,7 +28,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("7_ep78u")]
 spawn_interval = 0.1
-max_active_monsters = 20
 max_monsters = 75
 
 [node name="LootSpawner" parent="." instance=ExtResource("8_dfjjl")]

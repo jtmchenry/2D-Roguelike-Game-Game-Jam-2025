@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbr7n4ec5jii1"]
+
+[ext_resource type="Script" uid="uid://bl7qpx2k2w2qv" path="res://ui/hud/level_timer.gd" id="1_d3mko"]
+
+[node name="LevelTimer" type="CanvasLayer"]
+script = ExtResource("1_d3mko")
+
+[node name="SurvivalTimer" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="CountdownLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_right = 43.0
+offset_bottom = 103.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 75
+text = "20"
+
+[connection signal="timeout" from="SurvivalTimer" to="." method="_on_survival_timer_timeout"]

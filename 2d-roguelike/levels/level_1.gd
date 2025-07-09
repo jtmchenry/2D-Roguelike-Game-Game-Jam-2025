@@ -5,10 +5,6 @@ extends Node2D
 func _ready() -> void:
 	AudioManager.play_music("res://audio/FleetStreetBeat.wav")
 
-func _on_monster_spawner_all_monsters_killed() -> void:
-	await get_tree().create_timer(3.0).timeout
-	Game.level_complete()
-
 func _on_player_player_died() -> void:
 	game_over_modal.show()
 	Game.game_over()

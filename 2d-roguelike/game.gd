@@ -9,14 +9,6 @@ func start():
 	get_tree().change_scene_to_file(_current_level_scene_path())
 	
 func level_complete():
-	var slime_king = get_tree().current_scene.get_node_or_null("SlimeKing")
-	if slime_king != null:
-		# There is a SlimeKing alive; wait until it's dead
-		return
-	var slime_queen = get_tree().current_scene.get_node_or_null("SlimeQueen")
-	if slime_queen != null:
-		# There is a SlimeQueen alive; wait until it's dead
-		return
 	if current_level == last_level:
 		get_tree().change_scene_to_file("res://ui/victory.tscn")
 		return
@@ -40,5 +32,7 @@ func _current_level_scene_path() -> String:
 	return "res://levels/level_%d.tscn" % current_level
 
 func game_shop_item_price_scaling(base_price : int) -> int:
-	var current_value = (base_price + current_level + (base_price * 0.1 * current_level))
-	return current_level
+	if current_level == 1:
+		return base_price
+	var current_value : int = (base_price + (current_level - 1) + (base_price * 0.1 * (current_level - 1)))
+	return current_value

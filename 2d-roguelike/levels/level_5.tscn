@@ -16,6 +16,12 @@ script = ExtResource("1_ldpug")
 
 [node name="Map" parent="." instance=ExtResource("1_v5ho1")]
 
+[node name="SlimeKing" parent="." instance=ExtResource("10_8vr3t")]
+position = Vector2(558, 58)
+boss_heath = 4000
+speed = 200.0
+move_speed = 200.0
+
 [node name="BossLevelHud" parent="." instance=ExtResource("3_v5ho1")]
 
 [node name="HUD" parent="." instance=ExtResource("2_ldpug")]
@@ -25,16 +31,12 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource("5_ij65d")]
 
-[node name="SlimeKing" parent="." instance=ExtResource("10_8vr3t")]
-position = Vector2(558, 58)
-
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_hv08k")]
 visible = false
 player = NodePath("../Player")
 metadata/_edit_use_anchors_ = true
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("9_ldpug")]
-max_active_monsters = 50
 max_monsters = 200
 
 [node name="LootSpawner" parent="." instance=ExtResource("10_a58qw")]

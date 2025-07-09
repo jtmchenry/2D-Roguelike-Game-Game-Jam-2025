@@ -1,8 +1,11 @@
 extends Node2D
-#New Spawner Code
+
 @export var enemy_spawn_data: Array[EnemySpawnData]
-@export var spawn_interval: float = 2.0
-@export var max_active_monsters: int = 10
+@export var spawn_interval: float = 1.0
+@export var min_enemies_per_wave: int = 3
+@export var max_enemies_per_wave: int = 20
+@export var time_between_waves: float = 2
+@export var max_active_monsters: int = 1000
 @export var max_monsters: int = 50
 
 @onready var loot_spawner: Node2D = $"../LootSpawner"
@@ -10,32 +13,62 @@ extends Node2D
 var active_monsters: Array[Node2D] = []
 var enemy_pools: Dictionary = {}
 var spawn_timer: Timer
+var wave_timer: Timer
 
 var total_spawned: int = 0
 var total_killed: int = 0
+
+var current_wave_total: int = 0
+var current_wave_spawned: int = 0
 
 signal all_monsters_killed
 
 func _ready():
 	randomize()
+
+	# Timers
 	spawn_timer = Timer.new()
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	add_child(spawn_timer)
-	spawn_timer.start()
 
+	wave_timer = Timer.new()
+	wave_timer.wait_time = time_between_waves
+	wave_timer.timeout.connect(start_next_wave)
+	add_child(wave_timer)
+
+	# Prepare pools
 	for data in enemy_spawn_data:
 		enemy_pools[data.scene] = []
 
-func _on_spawn_timer_timeout():
-	spawn_enemy_by_weight()
-	
-	if total_spawned >= max_monsters:
-		spawn_timer.stop()
+	# Start first wave
+	start_next_wave()
 
+func start_next_wave():
+	if total_spawned >= max_monsters:
+		print("Max monsters reached, no more waves.")
+		return
+
+	current_wave_total = randi_range(min_enemies_per_wave, max_enemies_per_wave)
+
+	# Clamp to avoid going over total max
+	var remaining = max_monsters - total_spawned
+	current_wave_total = min(current_wave_total, remaining)
+
+	current_wave_spawned = 0
+	print("Starting new wave, enemies to spawn: ", current_wave_total)
+	spawn_timer.start()
+
+func _on_spawn_timer_timeout():
+	if current_wave_spawned < current_wave_total:
+		spawn_enemy_by_weight()
+	else:
+		# All enemies of this wave spawned
+		spawn_timer.stop()
 
 func spawn_enemy_by_weight():
 	if active_monsters.size() >= max_active_monsters:
+		print("Too many active monsters, waiting...")
 		return
 
 	var available: Array = []
@@ -63,8 +96,7 @@ func spawn_enemy_by_weight():
 		if rnd <= sum:
 			var data = available[i]
 			var enemy = get_enemy_instance(data)
-			
-			# Set position randomly around spawner
+
 			enemy.global_position = global_position + Vector2(randf_range(-800,800), randf_range(-800,800))
 
 			# Set health from data
@@ -76,9 +108,12 @@ func spawn_enemy_by_weight():
 			enemy.show()
 			get_tree().current_scene.add_child(enemy)
 			active_monsters.append(enemy)
-			
+
 			if enemy.has_method("reset"):
 				enemy.reset()
+
+			total_spawned += 1
+			current_wave_spawned += 1
 			break
 
 func get_enemy_instance(data: EnemySpawnData) -> Node2D:
@@ -87,7 +122,6 @@ func get_enemy_instance(data: EnemySpawnData) -> Node2D:
 		return pool.pop_back()
 	else:
 		var instance = data.scene.instantiate()
-		# Find Health node and connect died signal
 		var health_node = instance.get_node_or_null("Health")
 		if health_node:
 			if not health_node.is_connected("died", Callable(self, "_on_enemy_died")):
@@ -101,16 +135,20 @@ func _on_enemy_died(scene: PackedScene, enemy: Node2D):
 	enemy.hide()
 	enemy_pools[scene].append(enemy)
 	active_monsters.erase(enemy)
-	
-	total_killed += 1 
-	
-	check_all_monsters_killed()
 
-func check_all_monsters_killed() -> void:
-	if total_killed >= max_monsters:
-		emit_signal("all_monsters_killed")
-		Game.level_complete()
+	total_killed += 1 
+
+	# When no active monsters and wave fully spawned, start next wave
+	if active_monsters.is_empty() and current_wave_spawned >= current_wave_total:
+		print("Wave cleared, starting next wave in ", time_between_waves, " seconds")
+		wave_timer.start()
 
 func reset_spawner():
 	active_monsters.clear()
 	enemy_pools.clear()
+	total_spawned = 0
+	total_killed = 0
+	current_wave_total = 0
+	current_wave_spawned = 0
+	spawn_timer.stop()
+	wave_timer.stop()

@@ -1,6 +1,7 @@
 extends Enemy
 
 @onready var animated_sprite = $SlimeKingAnimatedSprite
+@export var boss_heath: int = 10000
 
 func _ready():
 	damage_timer.connect("timeout", _damage_player)
@@ -9,6 +10,8 @@ func _ready():
 		var players = get_tree().get_nodes_in_group("player")
 		player = players[0]
 	state_machine = $StateMachine
+	set_health_value(boss_heath)
+	emit_signal("health_changed")
 
 func _physics_process(delta: float):
 	var direction = player.global_position - global_position
@@ -39,5 +42,5 @@ func _on_slime_king_animated_sprite_animation_finished() -> void:
 
 func _on_health_died() -> void:
 	queue_free()
-	
+	Game.level_complete()
 	print("Slime King was killed")
