@@ -1,22 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk5in0ltunn8v"]
+[gd_scene load_steps=4 format=3 uid="uid://bk5in0ltunn8v"]
 
 [ext_resource type="Texture2D" uid="uid://dyaay6s331msn" path="res://monster/enemy_attacks/enemy_bullet/EnemyBullet.png" id="1_k0tab"]
+[ext_resource type="Script" uid="uid://bagklx3yjps1o" path="res://monster/enemy_attacks/enemy_bullet/enemy_bullet.gd" id="1_liy6g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k0tab"]
-radius = 13.0
+radius = 13.0384
 
-[node name="EnemyBullet" type="Node2D"]
+[node name="EnemyBullet" type="Area2D"]
+script = ExtResource("1_liy6g")
 
 [node name="Bullet" type="TextureRect" parent="."]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 44.0
-offset_bottom = 44.0
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 45.0
+offset_bottom = 45.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_k0tab")
+metadata/_edit_use_anchors_ = true
 
-[node name="BulletHitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletHitbox"]
-position = Vector2(-1, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_k0tab")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

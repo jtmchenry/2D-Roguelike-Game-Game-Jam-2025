@@ -15,7 +15,7 @@ func _ready():
 			current_state.enter()
 
 func _physics_process(delta):
-	if current_state:
+	if current_state and current_state.has_method("physics_update"):
 		current_state.physics_update(delta)
 
 func change_state(new_state: State, msg = null):
@@ -24,3 +24,7 @@ func change_state(new_state: State, msg = null):
 	current_state = new_state
 	if current_state:
 		current_state.enter(msg)
+
+func _process(delta):
+	if current_state and current_state.has_method("update"):
+		current_state.update(delta)
