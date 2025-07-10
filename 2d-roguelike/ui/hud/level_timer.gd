@@ -16,6 +16,9 @@ func _ready():
 	survival_timer.start()
 
 func _process(delta):
+	if Game.is_game_over:
+		survival_timer.stop()
+	
 	if survival_timer.is_stopped():
 		return
 	
@@ -41,5 +44,7 @@ func _process(delta):
 		countdown_label.add_theme_font_size_override("font_size", base_size)
 
 
+
 func _on_survival_timer_timeout() -> void:
-	Game.level_complete()
+	if not Game.is_game_over:
+		Game.level_complete()
